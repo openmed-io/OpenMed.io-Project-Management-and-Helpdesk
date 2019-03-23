@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<config>
+
+	<fieldset name="configuration"
+			label="OMHELPDESK_CONFIG_COMPONENT_CONFIGURATION"
+			description="OMHELPDESK_CONFIG_COMPONENT_CONFIGURATION_1"
+			addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="upload_maxsize"
+				label="OMHELPDESK_FIELD_UPLOAD_MAX_SIZE"
+				filter="STRING"
+				description="OMHELPDESK_FIELD_UPLOAD_MAX_SIZE_INFORMATION"
+				type="cktext"/>
+
+		<field name="upload_check_mime"
+				default="1"
+				label="OMHELPDESK_FIELD_CHECK_MIME_TYPE"
+				filter="INT"
+				description="OMHELPDESK_FIELD_UPLOAD_CHECK_MIME"
+				listKey="value"
+				type="ckradio"
+				viewType="both">
+			<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+		</field>
+
+		<field name="trash_dir"
+				default="[COM_ADMIN]/images/trash"
+				label="OMHELPDESK_FIELD_TRASH_DIR"
+				filter="STRING"
+				description="OMHELPDESK_FIELD_TRASH_DIR_INFORMATION"
+				type="cktext"/>
+
+		<field name="upload_dir_tickets_attachment"
+				default="[COM_SITE]/files/tickets_attachment"
+				label="OMHELPDESK_FIELD_UPLOAD_DIR_TICKETS_ATTACHMENT"
+				filter="STRING"
+				description="OMHELPDESK_FIELD_UPLOAD_DIR_INFORMATION"
+				type="cktext"/>
+	</fieldset>
+
+	<fieldset name="permissions"
+			label="OMHELPDESK_CONFIG_PERMISSIONS"
+			description="OMHELPDESK_CONFIG_DEFAULT_PERMISSIONS_USED_FOR_ALL_CONTENT_IN_THIS_COMPONENT"
+			addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="rules"
+				label="OMHELPDESK_FIELD_PERMISSIONS"
+				filter="rules"
+				type="rules"
+				validate="rules"
+				section="component"
+				component="com_omhelpdesk"/>
+	</fieldset>
+</config>

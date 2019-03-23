@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<form>
+
+	<fieldset name="ticket.form" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="title"
+				alias="title"
+				label="OMHELPDESK_FIELD_TITLE"
+				filter="STRING"
+				type="cktext"
+				required="true"
+				class="validate[required]"/>
+
+		<field name="pilot"
+				alias="_pilot_pilots_name"
+				label="OMHELPDESK_FIELD_PILOT"
+				filter="INT"
+				listKey="id"
+				labelKey="pilots_name"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_PILOT"/>
+
+		<field name="requester"
+				alias="_requester_requesters_name"
+				label="OMHELPDESK_FIELD_REQUESTER"
+				filter="INT"
+				listKey="id"
+				labelKey="requesters_name"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_REQUESTER"/>
+
+		<field name="category"
+				alias="_category_category"
+				label="OMHELPDESK_FIELD_CATEGORY"
+				filter="INT"
+				listKey="id"
+				labelKey="category"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_CATEGORY"/>
+
+		<field name="done"
+				alias="done"
+				label="OMHELPDESK_FIELD_DONE"
+				filter="BOOL"
+				listKey="value"
+				type="ckradio"
+				viewType="both">
+			<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+		</field>
+
+		<field name="sprint"
+				alias="_sprint_sprint_name"
+				label="OMHELPDESK_FIELD_SPRINT"
+				filter="INT"
+				listKey="id"
+				labelKey="sprint_name"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_SPRINT"/>
+
+		<field name="description"
+				alias="description"
+				label="OMHELPDESK_FIELD_DESCRIPTION"
+				filter="RAW"
+				type="ckeditor"/>
+
+		<field name="attachment"
+				alias="attachment"
+				label="OMHELPDESK_FIELD_ATTACHMENT"
+				filter="STRING"
+				type="ckfile"
+				view="ticket"
+				indirect="false"
+				root="[DIR_TICKETS_ATTACHMENT]"
+				actions="remove|thumbs|trash|delete"
+				allowedExtensions=""/>
+
+		<field name="hours_of_work"
+				alias="hours_of_work"
+				label="OMHELPDESK_FIELD_HOURS_OF_WORK"
+				filter="FLOAT"
+				numericFormat="10,2"
+				type="cktext"/>
+
+		<field name="overtime"
+				alias="overtime"
+				label="OMHELPDESK_FIELD_OVERTIME"
+				filter="BOOL"
+				listKey="value"
+				type="ckradio"
+				viewType="both">
+			<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+		</field>
+
+		<field name="finish_date_n_time"
+				alias="finish_date_n_time"
+				label="OMHELPDESK_FIELD_FINISH_DATE_N_TIME"
+				filter="USER_UTC"
+				type="calendar"
+				format="%Y-%m-%d %H:%M"
+				todaybutton="true"
+				weeknumbers="false"
+				filltable="true"
+				singleheader="false"
+				minyear="-100"
+				maxyear="+50"
+				timeformat="24"/>
+	</fieldset>
+
+	<fieldset name="default.filters" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="filter_published"
+				type="ckstate"
+				access="core.edit.state"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_SELECT_STATE"
+				display="combo"
+				label="State"
+				class="element-filter span-2"
+				ui="chosen"/>
+
+		<field name="filter_pilot_team"
+				listKey="id"
+				labelKey="team"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_TEAM"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_TEAM"
+				ui="chosen"/>
+
+		<field name="filter_pilot"
+				listKey="id"
+				labelKey="pilots_name"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_PILOT"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_PILOT"
+				ui="chosen"/>
+
+		<field name="filter_sprint"
+				listKey="id"
+				labelKey="sprint_name"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_SPRINT"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_SPRINT"
+				ui="chosen"/>
+
+		<field name="filter_requester_department"
+				listKey="id"
+				labelKey="department"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_DEPARTMENT"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_DEPARTMENT"
+				ui="chosen"/>
+
+		<field name="search_search"
+				type="cksearch"
+				placeholder="OMHELPDESK_FILTER_NULL_SEARCH"
+				label="OMHELPDESK_JSEARCH_SEARCH"
+				class="element-filter element-search search-query"
+				ui="chosen"/>
+
+		<field name="sortTable"
+				type="cksort"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JGLOBAL_SORT_BY"
+				class="span-2 element-filter"
+				label="Sort by"
+				ui="chosen"/>
+
+		<field name="directionTable"
+				type="ckdirection"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JFIELD_ORDERING_DESC"
+				class="span-2 element-filter"
+				label="Direction"
+				ui="chosen"/>
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+
+	<fieldset name="timereport.filters" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="filter_finish_date_n_time_from"
+				placeholder="OMHELPDESK_FILTER_FINISH_DATE_N_TIME_MODIFICATION_DATE"
+				type="calendar"
+				format="%Y-%m-%d %H:%M"
+				filter="USER_UTC"
+				todaybutton="true"
+				weeknumbers="false"
+				filltable="true"
+				singleheader="false"
+				minyear="-100"
+				maxyear="+50"
+				timeformat="24"
+				onchange="this.form.submit();"
+				label="OMHELPDESK_JSEARCH_FINISH_DATE_N_TIME"
+				class="element-filter input-small"
+				ui="chosen"/>
+
+		<field name="filter_finish_date_n_time_to"
+				placeholder="OMHELPDESK_FILTER_FINISH_DATE_N_TIME_FINISH_DATE_N_TIME_TO"
+				type="calendar"
+				format="%Y-%m-%d %H:%M"
+				filter="USER_UTC"
+				todaybutton="true"
+				weeknumbers="false"
+				filltable="true"
+				singleheader="false"
+				minyear="-100"
+				maxyear="+50"
+				timeformat="24"
+				onchange="this.form.submit();"
+				label="OMHELPDESK_JSEARCH_FINISH_DATE_N_TIME"
+				class="element-filter input-small"
+				ui="chosen"/>
+
+		<field name="filter_published"
+				type="ckstate"
+				access="core.edit.state"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_SELECT_STATE"
+				display="combo"
+				label="State"
+				class="element-filter span-2"
+				ui="chosen"/>
+
+		<field name="filter_pilot"
+				listKey="id"
+				labelKey="pilots_name"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_ASSIGNED_TO"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_ASSIGNED_TO"
+				ui="chosen"/>
+
+		<field name="filter_overtime"
+				listKey="value"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_OVERTIME"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_OVERTIME"
+				ui="chosen">
+			<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+		</field>
+
+		<field name="filter_done"
+				listKey="value"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_DONE"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_DONE"
+				ui="chosen">
+			<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+		</field>
+
+		<field name="sortTable"
+				type="cksort"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JGLOBAL_SORT_BY"
+				class="span-2 element-filter"
+				label="Sort by"
+				ui="chosen"/>
+
+		<field name="directionTable"
+				type="ckdirection"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JFIELD_ORDERING_DESC"
+				class="span-2 element-filter"
+				label="Direction"
+				ui="chosen"/>
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+
+	<fieldset name="modal.filters" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="filter_published"
+				type="ckstate"
+				access="core.edit.state"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_SELECT_STATE"
+				display="combo"
+				label="State"
+				class="element-filter span-2"
+				ui="chosen"/>
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+</form>

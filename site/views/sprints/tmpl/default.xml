@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<metadata>
+	<layout title="OMHELPDESK_LAYOUT_SPRINTS">
+	<message>
+		<![CDATA[OMHELPDESK_LAYOUT_SHOW_SPRINTS_LAYOUT]]>
+	</message></layout>
+
+	<fields name="request">
+
+		<fieldset name="request" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+			<field name="filter_published"
+					label="OMHELPDESK_JSEARCH_FILTER_PUBLISHED"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_PUBLISHED"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_PUBLISHED"
+					type="ckstate"
+					display="combo"/>
+		</fieldset>
+	</fields>
+</metadata>

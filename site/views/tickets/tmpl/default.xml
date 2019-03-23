@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<metadata>
+	<layout title="OMHELPDESK_LAYOUT_TICKETS">
+	<message>
+		<![CDATA[OMHELPDESK_LAYOUT_SHOW_TICKETS_LAYOUT]]>
+	</message></layout>
+
+	<fields name="request">
+
+		<fieldset name="request" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+			<field name="filter_published"
+					label="OMHELPDESK_JSEARCH_FILTER_PUBLISHED"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_PUBLISHED"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_PUBLISHED"
+					type="ckstate"
+					display="combo"/>
+
+			<field name="filter_pilot_team"
+					label="OMHELPDESK_JSEARCH_FILTER_TEAM"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_TEAM_1"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_TEAM"
+					type="modalpicker"
+					model="teams"
+					labelKey="team"/>
+
+			<field name="filter_pilot"
+					label="OMHELPDESK_JSEARCH_FILTER_PILOT"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_PILOT"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_PILOTS_NAME"
+					type="modalpicker"
+					model="pilots"
+					labelKey="pilots_username"/>
+
+			<field name="filter_sprint"
+					label="OMHELPDESK_JSEARCH_FILTER_SPRINT"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_SPRINT"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_SPRINT_NAME"
+					type="modalpicker"
+					model="sprints"
+					labelKey="sprint_name"/>
+
+			<field name="filter_requester_department"
+					label="OMHELPDESK_JSEARCH_FILTER_DEPARTMENT"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_SOURCE_DEPARTMENT"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_DEPARTMENT"
+					type="modalpicker"
+					model="sdepartments"
+					labelKey="published"/>
+		</fieldset>
+	</fields>
+</metadata>

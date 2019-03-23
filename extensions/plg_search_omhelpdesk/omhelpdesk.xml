@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension type="plugin" version="3.0" method="upgrade" group="search">
+	<name><![CDATA[Search - OM Helpdesk]]></name>
+	<author><![CDATA[Marcin Krasucki]]></author>
+	<creationDate><![CDATA[23 Mar 2019]]></creationDate>
+	<copyright><![CDATA[]]></copyright>
+	<authorEmail><![CDATA[marcin.krasucki@intuigo.pl]]></authorEmail>
+	<authorUrl><![CDATA[openmed.io]]></authorUrl>
+	<version><![CDATA[1]]></version>
+	<license><![CDATA[GNU GPL]]></license>
+	<description><![CDATA[]]></description>
+
+	<files>
+		<filename plugin="omhelpdesk">index.html</filename>
+		<filename plugin="omhelpdesk">omhelpdesk.php</filename>
+		<filename plugin="omhelpdesk">script.php</filename>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB.plg_search_omhelpdesk.ini</language>
+	</languages>
+	<scriptfile>script.php</scriptfile>
+</extension>

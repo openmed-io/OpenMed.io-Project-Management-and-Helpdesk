@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<metadata>
+	<layout title="OMHELPDESK_LAYOUT_TIME_REPORT">
+	<message>
+		<![CDATA[OMHELPDESK_LAYOUT_SHOW_TIME_REPORT_LAYOUT]]>
+	</message></layout>
+
+	<fields name="request">
+
+		<fieldset name="request" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+			<field name="filter_finish_date_n_time_from"
+					label="OMHELPDESK_JSEARCH_FILTER_MODIFICATION_DATE"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_MODIFICATION_DATE"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_FINISH_DATE_N_TIME"
+					format="Y-m-d H:i"
+					type="ckcalendar"/>
+
+			<field name="filter_finish_date_n_time_to"
+					label="OMHELPDESK_JSEARCH_FILTER_FINISH_DATE_N_TIME_TO"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_FINISH_DATE_N_TIME_TO"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_FINISH_DATE_N_TIME"
+					format="Y-m-d H:i"
+					type="ckcalendar"/>
+
+			<field name="filter_published"
+					label="OMHELPDESK_JSEARCH_FILTER_PUBLISHED"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_PUBLISHED"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_PUBLISHED"
+					type="ckstate"
+					display="combo"/>
+
+			<field name="filter_pilot"
+					label="OMHELPDESK_JSEARCH_FILTER_PILOT"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_PILOT"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_PILOTS_NAME"
+					type="modalpicker"
+					model="pilots"
+					labelKey="pilots_username"/>
+
+			<field name="filter_overtime"
+					label="OMHELPDESK_JSEARCH_FILTER_OVERTIME"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_OVERTIME"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_OVERTIME"
+					type="ckcombo"
+					listKey="value">
+				<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+				<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+			</field>
+
+			<field name="filter_done"
+					label="OMHELPDESK_JSEARCH_FILTER_DONE"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_DONE"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_DONE"
+					type="ckcombo"
+					listKey="value">
+				<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+				<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

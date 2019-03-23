@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<metadata>
+	<layout title="OMHELPDESK_LAYOUT_PILOT">
+	<message>
+		<![CDATA[OMHELPDESK_LAYOUT_SHOW_PILOT_LAYOUT]]>
+	</message></layout>
+
+	<fields name="request">
+
+		<fieldset name="request" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+			<field name="cid"
+					type="modalpicker"
+					label="OMHELPDESK_JSEARCH_SELECT_PILOT"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_PILOT"
+					model="pilots"
+					labelKey="pilots_username"/>
+		</fieldset>
+	</fields>
+</metadata>

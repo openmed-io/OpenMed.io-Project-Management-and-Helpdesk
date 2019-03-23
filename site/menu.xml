@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<config>
+
+	<menu name="cpanel">
+
+		<item		label="OMHELPDESK_LAYOUT_TICKETS"
+				description="OMHELPDESK_LAYOUT_SHOW_TICKETS_LAYOUT"
+				type="layout"
+				view="tickets"
+				layout="default"
+				icon="omhelpdesk_tickets"/>
+
+		<item		label="OMHELPDESK_LAYOUT_TIME_REPORT"
+				description="OMHELPDESK_LAYOUT_SHOW_TIME_REPORT_LAYOUT"
+				type="layout"
+				view="tickets"
+				layout="timereport"
+				icon="omhelpdesk_tickets"/>
+
+		<item		label="OMHELPDESK_LAYOUT_CATEGORIES"
+				description="OMHELPDESK_LAYOUT_SHOW_CATEGORIES_LAYOUT"
+				type="layout"
+				view="categories"
+				layout="default"
+				icon="omhelpdesk_categories"/>
+
+		<item		label="OMHELPDESK_LAYOUT_SPRINTS"
+				description="OMHELPDESK_LAYOUT_SHOW_SPRINTS_LAYOUT"
+				type="layout"
+				view="sprints"
+				layout="default"
+				icon="omhelpdesk_sprints"/>
+
+		<item		label="OMHELPDESK_LAYOUT_PILOTS"
+				description="OMHELPDESK_LAYOUT_SHOW_PILOTS_LAYOUT"
+				type="layout"
+				view="pilots"
+				layout="default"
+				icon="omhelpdesk_pilots"/>
+
+		<item		label="OMHELPDESK_LAYOUT_TEAMS"
+				description="OMHELPDESK_LAYOUT_SHOW_TEAMS_LAYOUT"
+				type="layout"
+				view="teams"
+				layout="default"
+				icon="omhelpdesk_teams"/>
+
+		<item		label="OMHELPDESK_LAYOUT_DEPARTMENTS"
+				description="OMHELPDESK_LAYOUT_SHOW_DEPARTMENTS_LAYOUT"
+				type="layout"
+				view="sdepartments"
+				layout="default"
+				icon="omhelpdesk_sdepartments"/>
+
+		<item		label="OMHELPDESK_LAYOUT_REQUESTORS"
+				description="OMHELPDESK_LAYOUT_SHOW_REQUESTORS_LAYOUT"
+				type="layout"
+				view="requestors"
+				layout="default"
+				icon="omhelpdesk_requestors"/>
+	</menu>
+
+	<menu name="menu">
+
+		<item		label="OMHELPDESK_LAYOUT_CONTROL_PANEL"
+				description="OMHELPDESK_LAYOUT_SHOW_CONTROL_PANEL_LAYOUT"
+				type="layout"
+				view="cpanel"
+				layout="default"
+				icon="omhelpdesk_cpanel"/>
+
+		<item		label="OMHELPDESK_LAYOUT_TICKETS"
+				description="OMHELPDESK_LAYOUT_SHOW_TICKETS_LAYOUT"
+				type="layout"
+				view="tickets"
+				layout="default"
+				icon="omhelpdesk_tickets"/>
+
+		<item		label="OMHELPDESK_LAYOUT_TIME_REPORT"
+				description="OMHELPDESK_LAYOUT_SHOW_TIME_REPORT_LAYOUT"
+				type="layout"
+				view="tickets"
+				layout="timereport"
+				icon="omhelpdesk_tickets"/>
+
+		<item		label="OMHELPDESK_LAYOUT_CATEGORIES"
+				description="OMHELPDESK_LAYOUT_SHOW_CATEGORIES_LAYOUT"
+				type="layout"
+				view="categories"
+				layout="default"
+				icon="omhelpdesk_categories"/>
+
+		<item		label="OMHELPDESK_LAYOUT_SPRINTS"
+				description="OMHELPDESK_LAYOUT_SHOW_SPRINTS_LAYOUT"
+				type="layout"
+				view="sprints"
+				layout="default"
+				icon="omhelpdesk_sprints"/>
+
+		<item		label="OMHELPDESK_LAYOUT_PILOTS"
+				description="OMHELPDESK_LAYOUT_SHOW_PILOTS_LAYOUT"
+				type="layout"
+				view="pilots"
+				layout="default"
+				icon="omhelpdesk_pilots"/>
+
+		<item		label="OMHELPDESK_LAYOUT_TEAMS"
+				description="OMHELPDESK_LAYOUT_SHOW_TEAMS_LAYOUT"
+				type="layout"
+				view="teams"
+				layout="default"
+				icon="omhelpdesk_teams"/>
+
+		<item		label="OMHELPDESK_LAYOUT_DEPARTMENTS"
+				description="OMHELPDESK_LAYOUT_SHOW_DEPARTMENTS_LAYOUT"
+				type="layout"
+				view="sdepartments"
+				layout="default"
+				icon="omhelpdesk_sdepartments"/>
+
+		<item		label="OMHELPDESK_LAYOUT_REQUESTORS"
+				description="OMHELPDESK_LAYOUT_SHOW_REQUESTORS_LAYOUT"
+				type="layout"
+				view="requestors"
+				layout="default"
+				icon="omhelpdesk_requestors"/>
+	</menu>
+</config>

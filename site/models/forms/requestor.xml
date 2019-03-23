@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<form>
+
+	<fieldset name="requester.form" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="department"
+				alias="_department_department"
+				label="OMHELPDESK_FIELD_DEPARTMENT"
+				filter="INT"
+				listKey="id"
+				labelKey="department"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_DEPARTMENT"/>
+
+		<field name="requesters_name"
+				alias="requesters_name"
+				label="OMHELPDESK_FIELD_REQUESTERS_NAME"
+				filter="STRING"
+				unique="true"
+				type="cktext"
+				validate="default"
+				required="true"
+				class="validate[required]"/>
+
+		<field name="requesters_username"
+				alias="_requesters_username_username"
+				label="OMHELPDESK_FIELD_REQUESTERS_USERNAME"
+				filter="INT"
+				listKey="id"
+				labelKey="username"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_REQUESTERS_USERNAME"/>
+
+		<field name="contact_info"
+				alias="contact_info"
+				label="OMHELPDESK_FIELD_CONTACT_INFO"
+				filter="STRING"
+				type="cktextarea"/>
+	</fieldset>
+
+	<fieldset name="default.filters" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="filter_published"
+				type="ckstate"
+				access="core.edit.state"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_SELECT_STATE"
+				display="combo"
+				label="State"
+				class="element-filter span-2"
+				ui="chosen"/>
+
+		<field name="sortTable"
+				type="cksort"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JGLOBAL_SORT_BY"
+				class="span-2 element-filter"
+				label="Sort by"
+				ui="chosen"/>
+
+		<field name="directionTable"
+				type="ckdirection"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JFIELD_ORDERING_DESC"
+				class="span-2 element-filter"
+				label="Direction"
+				ui="chosen"/>
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+
+	<fieldset name="modal.filters" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="filter_published"
+				type="ckstate"
+				access="core.edit.state"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_SELECT_STATE"
+				display="combo"
+				label="State"
+				class="element-filter span-2"
+				ui="chosen"/>
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+</form>

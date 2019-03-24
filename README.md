@@ -1,8 +1,8 @@
 # OpenMed.io - Project Management and Helpdesk
 
 Installation:
-download latest release
-use Joomla installer (tested with Joomla 3.9)
+1.) download latest release
+2.) use Joomla installer (tested with Joomla 3.9)
 
 preview, support and more info: 
 https://OpenMed.io

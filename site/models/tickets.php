@@ -58,6 +58,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		if (empty($config['filter_fields'])) {
 			$config['filter_fields'] = array(
 				'a.done', 'done',
+				'a.ordering', 'ordering',
 				'a.title', 'title',
 				'a.creation_date', 'creation_date',
 				'_requester_.requesters_name', 'requester.requesters_name',
@@ -273,6 +274,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 					'category.category',
 					'creation_date',
 					'done',
+					'ordering',
 					'pilot',
 					'pilot.pilots_username',
 					'pilot.pilots_username.name',

@@ -292,6 +292,7 @@ class OmhelpdeskCkViewTickets extends OmhelpdeskClassView
 	{
 		return array(
 			'done' => JText::_('OMHELPDESK_FIELD_DONE'),
+			'ordering' => JText::_('OMHELPDESK_FIELD_ORDERING'),
 			'title' => JText::_('OMHELPDESK_FIELD_TITLE'),
 			'creation_date' => JText::_('OMHELPDESK_FIELD_CREATION_DATE'),
 			'requester.requesters_name' => JText::_('OMHELPDESK_FIELD_REQUESTER'),

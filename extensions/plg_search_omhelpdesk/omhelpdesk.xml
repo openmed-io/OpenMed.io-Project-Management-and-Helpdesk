@@ -3,7 +3,7 @@
 <extension type="plugin" version="3.0" method="upgrade" group="search">
 	<name><![CDATA[Search - OM Helpdesk]]></name>
 	<author><![CDATA[Marcin Krasucki]]></author>
-	<creationDate><![CDATA[23 Mar 2019]]></creationDate>
+	<creationDate><![CDATA[24 Mar 2019]]></creationDate>
 	<copyright><![CDATA[]]></copyright>
 	<authorEmail><![CDATA[marcin.krasucki@intuigo.pl]]></authorEmail>
 	<authorUrl><![CDATA[openmed.io]]></authorUrl>

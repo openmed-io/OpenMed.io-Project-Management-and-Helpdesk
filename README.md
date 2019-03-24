@@ -1,5 +1,5 @@
 # OpenMed.io - Project Management and Helpdesk
-Project Management and Helpdesk - more info on OpenMed.io
+use Joomla installer (tested with Joomla 3.9)
 
-pack all files into zip archive and use joomal installer,
-tip: github zip download option adds aditional folder it cant be used as installer.
+preview, support and more info: 
+https://OpenMed.io

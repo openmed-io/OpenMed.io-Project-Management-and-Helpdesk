@@ -1,4 +1,4 @@
-# OpenMed.io-Project-Management-and-Helpdesk
+# OpenMed.io - Project Management and Helpdesk
 Project Management and Helpdesk - more info on OpenMed.io
 
 pack all files into zip archive and use joomal installer,

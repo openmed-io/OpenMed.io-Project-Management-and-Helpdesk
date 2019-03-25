@@ -29,6 +29,7 @@
 
 	<languages folder="site">
 		<language tag="en-GB">language/en-GB.com_omhelpdesk.ini</language>
+		<language tag="pl-PL">language/pl-PL.com_omhelpdesk.ini</language>
 	</languages>
 
 	<administration>

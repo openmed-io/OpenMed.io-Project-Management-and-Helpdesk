@@ -3,7 +3,7 @@
 <extension type="component" version="1.6" method="upgrade">
 	<name><![CDATA[omhelpdesk]]></name>
 	<author><![CDATA[Marcin Krasucki]]></author>
-	<creationDate><![CDATA[25 Mar 2019]]></creationDate>
+	<creationDate><![CDATA[03 Apr 2019]]></creationDate>
 	<copyright><![CDATA[]]></copyright>
 	<authorEmail><![CDATA[marcin.krasucki@intuigo.pl]]></authorEmail>
 	<authorUrl><![CDATA[openmed.io]]></authorUrl>
@@ -29,7 +29,6 @@
 
 	<languages folder="site">
 		<language tag="en-GB">language/en-GB.com_omhelpdesk.ini</language>
-		<language tag="pl-PL">language/pl-PL.com_omhelpdesk.ini</language>
 	</languages>
 
 	<administration>

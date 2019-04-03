@@ -74,7 +74,7 @@ class OmhelpdeskCkModelSprint extends OmhelpdeskClassModelItem
 		$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
 		$model->integrityRestrict('sprint', $pks,
 			// Label Key
-			'title',
+			'ordering',
 
 			// Parent Label Key
 			'sprint_name'

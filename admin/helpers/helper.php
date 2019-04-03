@@ -477,7 +477,12 @@ class OmhelpdeskCkHelper
 		preg_match_all('/{([a-zA-Z0-9_]+)}/', $labelKey, $matches);
 
 		if (!count($matches[0]))
+		{
+			if (!isset($item->$labelKey))
+				return null;
+
 			return $item->$labelKey;
+		}
 
 		$replaceFrom = array();
 		$replaceTo = array();
@@ -485,7 +490,7 @@ class OmhelpdeskCkHelper
 		foreach($matches[1] as $key)
 		{
 			$replaceFrom[] = '{' . $key . '}';
-			$replaceTo[] = $item->$key;
+			$replaceTo[] = (isset($item->$key)?$item->$key:null);
 		}
 
 		$text = str_replace($replaceFrom, $replaceTo, $labelKey);

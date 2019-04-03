@@ -161,7 +161,7 @@ class OmhelpdeskCkFormFieldModalpicker extends JFormField
 		.	' type="hidden"'
 		.	' id="' . $id . '_id"'
 		.	' name="' . $this->name . '"'
-		.	' value="' . $title . '"'
+		.	' value="' . $this->value . '"'
 		.	'/>';
 
 

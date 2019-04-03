@@ -114,7 +114,9 @@ class OmhelpdeskCkViewTickets extends OmhelpdeskClassView
 	*/
 	protected function getSortFields($layout = null)
 	{
-		return array();
+		return array(
+			'ordering' => JText::_('OMHELPDESK_FIELD_ORDERING')
+		);
 	}
 
 

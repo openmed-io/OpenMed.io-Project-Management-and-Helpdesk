@@ -173,7 +173,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			case 'layout.modal':
 
 				$this->orm->select(array(
-					'title'
+					'ordering'
 				));
 				break;
 
@@ -200,7 +200,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		));
 
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'title');
+		$orderCol = $this->getState('list.ordering', 'ordering');
 		$orderDir = $this->getState('list.direction', 'ASC');
 
 		if ($orderCol)

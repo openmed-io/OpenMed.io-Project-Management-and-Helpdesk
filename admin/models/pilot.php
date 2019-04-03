@@ -74,7 +74,7 @@ class OmhelpdeskCkModelPilot extends OmhelpdeskClassModelItem
 		$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
 		$model->integrityRestrict('pilot', $pks,
 			// Label Key
-			'title',
+			'ordering',
 
 			// Parent Label Key
 			'pilots_username'

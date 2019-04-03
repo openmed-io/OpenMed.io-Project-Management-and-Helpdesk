@@ -186,6 +186,10 @@ class OmhelpdeskCkHelperDates
 	{
 		foreach($list as $item)
 		{
+			if (!property_exists($item, $key))
+				continue;
+
+
 			if ($date = new JDate($item->$key))
 				$item->$key = $date->format($format);
 		}

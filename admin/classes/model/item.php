@@ -2038,8 +2038,8 @@ class OmhelpdeskCkClassModelItem extends JModelAdmin
 				{
 
 
-					$modelPivot = JModelLegacy::getInstance($relation->pivotModel, $relation->extension . 'Model');
-					$model = JModelLegacy::getInstance($modelPivot->getNameItem(), $relation->extension . 'Model');
+					$modelPivot = JModelLegacy::getInstance($relation->pivotModel, ucfirst($relation->extension) . 'Model');
+					$model = JModelLegacy::getInstance($modelPivot->getNameItem(), ucfirst($relation->extension) . 'Model');
 
 
 					// ADD with Model
@@ -2253,29 +2253,6 @@ class OmhelpdeskCkClassModelItem extends JModelAdmin
 
 			switch($field->type)
 			{
-				//JOOMLA FIX : Reformate the date/time format comming from the post
-				case 'ckcalendar':
-
-					if ($value && (string)$field->format)
-					{
-						// Validation treatement only for strings formats. Unix type always pass
-						if (!is_numeric($value) && !OmhelpdeskHelperDates::isNull((string)$value))
-						{
-							$time = OmhelpdeskHelperDates::getSqlDate($value, array($field->format));
-
-							if ($time === null){
-								JError::raiseWarning(1203, JText::sprintf('OMHELPDESK_VALIDATOR_WRONG_DATETIME_FORMAT_FOR_PLEASE_RETRY', $field->label));
-								$valid = false;
-							}
-							else
-								$data[$field->fieldname] = $time->toSql();
-						}
-					}
-
-
-					break;
-
-
 				//JOOMLA FIX : Apply a null value if the field is in the form
 				case 'ckcheckbox':
 					if (!$value)

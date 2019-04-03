@@ -13,15 +13,6 @@
 				required="true"
 				class="validate[required]"/>
 
-		<field name="pilot"
-				alias="_pilot_pilots_name"
-				label="OMHELPDESK_FIELD_PILOT"
-				filter="INT"
-				listKey="id"
-				labelKey="pilots_name"
-				type="ckcombo"
-				nullLabel="OMHELPDESK_JSEARCH_SELECT_PILOT"/>
-
 		<field name="requester"
 				alias="_requester_requesters_name"
 				label="OMHELPDESK_FIELD_REQUESTER"
@@ -30,6 +21,15 @@
 				labelKey="requesters_name"
 				type="ckcombo"
 				nullLabel="OMHELPDESK_JSEARCH_SELECT_REQUESTER"/>
+
+		<field name="pilot"
+				alias="_pilot_pilots_name"
+				label="OMHELPDESK_FIELD_PILOT"
+				filter="INT"
+				listKey="id"
+				labelKey="pilots_name"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_PILOT"/>
 
 		<field name="category"
 				alias="_category_category"

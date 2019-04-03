@@ -74,7 +74,7 @@ class OmhelpdeskCkModelRequestor extends OmhelpdeskClassModelItem
 		$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
 		$model->integrityRestrict('requester', $pks,
 			// Label Key
-			'title',
+			'ordering',
 
 			// Parent Label Key
 			'requesters_name'

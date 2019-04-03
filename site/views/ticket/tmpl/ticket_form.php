@@ -48,10 +48,10 @@ $fieldSets = $this->form->getFieldsets();
 
 
 	<?php
-	// Pilot
-	$field = $fieldSet['jform_pilot'];
+	// Requester
+	$field = $fieldSet['jform_requester'];
 	$field->jdomOptions = array(
-		'list' => $this->lists['fk']['pilot']
+		'list' => $this->lists['fk']['requester']
 			);
 	?>
 	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
@@ -68,10 +68,10 @@ $fieldSets = $this->form->getFieldsets();
 
 
 	<?php
-	// Requester
-	$field = $fieldSet['jform_requester'];
+	// Pilot
+	$field = $fieldSet['jform_pilot'];
 	$field->jdomOptions = array(
-		'list' => $this->lists['fk']['requester']
+		'list' => $this->lists['fk']['pilot']
 			);
 	?>
 	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">

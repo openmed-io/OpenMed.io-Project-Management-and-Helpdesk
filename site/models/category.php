@@ -74,7 +74,7 @@ class OmhelpdeskCkModelCategory extends OmhelpdeskClassModelItem
 		$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
 		$model->integrityRestrict('category', $pks,
 			// Label Key
-			'title',
+			'ordering',
 
 			// Parent Label Key
 			'category',

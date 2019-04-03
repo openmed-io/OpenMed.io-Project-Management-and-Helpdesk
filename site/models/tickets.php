@@ -209,22 +209,22 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			//Alphabetic, ascending
 			case 'alpha':
 			default:
-				$orderField = 'a.title';
+				$orderField = 'a.ordering';
 				$orderDir = 'ASC';
 				break;
 		}
 
 		$this->orm(array(
 			'select' => array(
-				'title' => 'title',
-				"{title} {pilot.pilots_name}" => 'text',
+				'ordering' => 'title',
+				"{ordering} {title} {pilot.pilots_name}" => 'text',
 			),
 
 			'search' => array(
 
 				'plugin' => array(
 					'on' => array(
-						'{title} {pilot.pilots_name}' => $method,
+						'{ordering} {title} {pilot.pilots_name}' => $method,
 					),
 				),
 			),
@@ -305,7 +305,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			case 'layout.modal':
 
 				$this->orm->select(array(
-					'title'
+					'ordering'
 				));
 				break;
 
@@ -422,7 +422,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		}
 
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'title');
+		$orderCol = $this->getState('list.ordering', 'ordering');
 		$orderDir = $this->getState('list.direction', 'ASC');
 
 		if ($orderCol)

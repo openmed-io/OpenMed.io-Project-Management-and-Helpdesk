@@ -45,9 +45,11 @@ JDom::_('framework.sortablelist', array(
 	<table  class='table' id='grid-tickets'>
 		<thead>
 			<tr>
+				<?php if ($model->canEditState()): ?>
 				<th>
-					<?php echo JText::_("OMHELPDESK_FIELD_TITLE"); ?>
+					<?php echo JHTML::_('grid.sort',  "OMHELPDESK_HEADING_ORDERING", 'a.ordering', $listDirn, $listOrder ); ?>
 				</th>
+				<?php endif; ?>
 
 				<th width="10px">
 
@@ -73,7 +75,7 @@ JDom::_('framework.sortablelist', array(
 			$function	= $input->get('function', 'jSelectItem');
 			//Prepare the params to send to the callback
 			$pickValue = $row->id;
-			$pickLabel = $this->escape(addslashes($row->title));
+			$pickLabel = $this->escape(addslashes($row->ordering));
 			$jsPick = "if (window.parent) window.parent.$function('$pickValue', '$pickLabel', '$modalObject');"
 
 
@@ -83,12 +85,16 @@ JDom::_('framework.sortablelist', array(
 				style="cursor:pointer"
 				onclick="<?php echo $jsPick; ?>">
 
+				<?php if ($model->canEditState()): ?>
 				<td>
-					<?php echo JDom::_('html.fly', array(
-						'dataKey' => 'title',
-						'dataObject' => $row
+					<?php echo JDom::_('html.grid.ordering', array(
+						'aclAccess' => 'core.edit.state',
+						'dataKey' => 'ordering',
+						'dataObject' => $row,
+						'enabled' => $saveOrder
 					));?>
 				</td>
+				<?php endif; ?>
 
 				<td width="10px">
 					<?php echo JDom::_('html.fly', array(

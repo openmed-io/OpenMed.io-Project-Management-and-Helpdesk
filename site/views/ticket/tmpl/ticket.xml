@@ -17,7 +17,7 @@
 					default=""
 					description="OMHELPDESK_JSEARCH_SELECT_TICKET"
 					model="tickets"
-					labelKey="title"/>
+					labelKey="ordering"/>
 		</fieldset>
 	</fields>
 </metadata>

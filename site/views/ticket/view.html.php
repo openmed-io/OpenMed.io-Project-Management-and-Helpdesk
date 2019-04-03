@@ -63,7 +63,7 @@ class OmhelpdeskCkViewTicket extends OmhelpdeskClassView
 		$this->lists = &$lists;
 
 		// Define the title
-		$this->_prepareDocument(JText::_('OMHELPDESK_LAYOUT_TICKET'), $this->item, 'title');
+		$this->_prepareDocument(JText::_('OMHELPDESK_LAYOUT_TICKET'), $this->item, 'ordering');
 
 		$user		= JFactory::getUser();
 		$isNew		= ($model->getId() == 0);
@@ -86,17 +86,23 @@ class OmhelpdeskCkViewTicket extends OmhelpdeskClassView
 		// Save & New
 		if (($isNew && $model->canCreate()) || (!$isNew && $item->params->get('access-edit')))
 			JToolBarHelper::save2new('ticket.save2new', "OMHELPDESK_JTOOLBAR_SAVE_NEW");
+		// Save
+		if (($isNew && $model->canCreate()) || (!$isNew && $item->params->get('access-edit')))
+			JToolBarHelper::apply('ticket.apply', "OMHELPDESK_JTOOLBAR_SAVE");
+		// Save to Copy
+		if (($isNew && $model->canCreate()) || (!$isNew && $item->params->get('access-edit')))
+			JToolBarHelper::save2copy('ticket.save2copy', "OMHELPDESK_JTOOLBAR_SAVE_TO_COPY");
 		// Cancel
 		JToolBarHelper::cancel('ticket.cancel', "OMHELPDESK_JTOOLBAR_CANCEL");
 
 		$this->toolbar = JToolbar::getInstance();
-		$model_pilot = CkJModel::getInstance('Pilots', 'OmhelpdeskModel');
-		$model_pilot->addGroupOrder("a.pilots_name");
-		$lists['fk']['pilot'] = $model_pilot->getItems();
-
 		$model_requester = CkJModel::getInstance('Requestors', 'OmhelpdeskModel');
 		$model_requester->addGroupOrder("a.requesters_name");
 		$lists['fk']['requester'] = $model_requester->getItems();
+
+		$model_pilot = CkJModel::getInstance('Pilots', 'OmhelpdeskModel');
+		$model_pilot->addGroupOrder("a.pilots_name");
+		$lists['fk']['pilot'] = $model_pilot->getItems();
 
 		$model_category = CkJModel::getInstance('Categories', 'OmhelpdeskModel');
 		$model_category->addGroupOrder("a.category");

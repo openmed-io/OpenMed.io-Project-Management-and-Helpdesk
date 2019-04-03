@@ -329,6 +329,24 @@ class OmhelpdeskCkControllerTicket extends OmhelpdeskClassControllerItem
 				));
 				break;
 
+			case 'ticket.apply':
+				$this->applyRedirection($result, array(
+					'stay',
+					'com_omhelpdesk.ticket.ticket'
+				), array(
+					'cid[]' => $model->getState('ticket.id')
+				));
+				break;
+
+			case 'ticket.save2copy':
+				$this->applyRedirection($result, array(
+					'stay',
+					'com_omhelpdesk.ticket.ticket'
+				), array(
+					'cid[]' => $model->getState('ticket.id')
+				));
+				break;
+
 			default:
 				$this->applyRedirection($result, array(
 					'stay',

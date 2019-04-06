@@ -246,7 +246,8 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 					'category',
 					'deputy_admin',
 					'deputy_admin.pilots_name',
-					'desciption'
+					'desciption',
+					'ordering'
 				));
 				break;
 

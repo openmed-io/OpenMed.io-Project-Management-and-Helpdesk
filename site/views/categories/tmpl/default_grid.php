@@ -62,6 +62,12 @@ JDom::_('framework.sortablelist', array(
 					<?php echo JText::_("OMHELPDESK_FIELD_CATEGORY"); ?>
 				</th>
 
+				<?php if ($model->canEditState()): ?>
+				<th style="text-align:center">
+					<?php echo JHTML::_('grid.sort',  "OMHELPDESK_HEADING_ORDERING", 'a.ordering', $listDirn, $listOrder ); ?>
+				</th>
+				<?php endif; ?>
+
 				<th style="text-align:center">
 					<?php echo JText::_("OMHELPDESK_FIELD_DESCIPTION"); ?>
 				</th>
@@ -102,6 +108,17 @@ JDom::_('framework.sortablelist', array(
 						'dataObject' => $row
 					));?>
 				</td>
+
+				<?php if ($model->canEditState()): ?>
+				<td style="text-align:center">
+					<?php echo JDom::_('html.grid.ordering', array(
+						'aclAccess' => 'core.edit.state',
+						'dataKey' => 'ordering',
+						'dataObject' => $row,
+						'enabled' => $saveOrder
+					));?>
+				</td>
+				<?php endif; ?>
 
 				<td style="text-align:center">
 					<?php echo JDom::_('html.fly', array(

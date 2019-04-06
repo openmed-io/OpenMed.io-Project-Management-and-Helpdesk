@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -46,6 +46,8 @@ echo JLayoutHelper::render('title', array(
 			<?php echo $this->renderToolbar();?>
 			<!-- BRICK : form -->
 			<?php echo $this->loadTemplate('form'); ?>
+			<!-- BRICK : Metadata -->
+			<?php echo $this->loadTemplate('fly'); ?>
 		</div>
 	</div>
 

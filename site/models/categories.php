@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -57,6 +57,8 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 		//Define the sortables fields (in lists)
 		if (empty($config['filter_fields'])) {
 			$config['filter_fields'] = array(
+				'a.ordering', 'ordering',
+				'ordering', 'a.ordering',
 
 			);
 		}
@@ -66,7 +68,9 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 			'published' => 'cmd',
 			'sortTable' => 'cmd',
 			'directionTable' => 'cmd',
-			'limit' => 'cmd'
+			'limit' => 'cmd',
+			'admin' => 'cmd',
+			'deputy_admin' => 'cmd'
 				));
 
 		//Define the searchable fields
@@ -77,6 +81,29 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 
 		parent::__construct($config);
 
+		$this->hasOne('admin', // name
+			'pilots', // foreignModelClass
+			'admin', // localKey
+			'id' // foreignKey
+		);
+
+		$this->hasOne('deputy_admin', // name
+			'pilots', // foreignModelClass
+			'deputy_admin', // localKey
+			'id' // foreignKey
+		);
+
+		$this->hasOne('created_by', // name
+			'.users', // foreignModelClass
+			'created_by', // localKey
+			'id' // foreignKey
+		);
+
+		$this->hasOne('modified_by', // name
+			'.users', // foreignModelClass
+			'modified_by', // localKey
+			'id' // foreignKey
+		);
 	}
 
 	/**
@@ -116,6 +143,8 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 		$id	.= ':'.$this->getState('limit');
 		$id	.= ':'.$this->getState('search.search');
 		$id	.= ':'.$this->getState('filter.published');
+		$id	.= ':'.$this->getState('filter.admin');
+		$id	.= ':'.$this->getState('filter.deputy_admin');
 		return parent::getStoreId($id);
 	}
 
@@ -136,26 +165,37 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 
 		switch ( $ordering )
 		{
+			// Oldest first
+			case 'oldest':
+				$orderField = 'a.creation_date';
+				$orderDir = 'ASC';
+				break;
+
+			// Newest first
+			case 'newest':
+				$orderField = 'a.creation_date';
+				$orderDir = 'DESC';
+				break;
 
 			//Alphabetic, ascending
 			case 'alpha':
 			default:
-				$orderField = 'a.category';
+				$orderField = 'a.ordering';
 				$orderDir = 'ASC';
 				break;
 		}
 
 		$this->orm(array(
 			'select' => array(
-				'category' => 'title',
-				"{category}" => 'text',
+				'ordering' => 'title',
+				"{ordering} {category} {desciption}" => 'text',
 			),
 
 			'search' => array(
 
 				'plugin' => array(
 					'on' => array(
-						'{category}' => $method,
+						'{ordering} {category} {desciption}' => $method,
 					),
 				),
 			),
@@ -201,14 +241,19 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 			case 'layout.default':
 
 				$this->orm->select(array(
-					'category'
+					'admin',
+					'admin.pilots_name',
+					'category',
+					'deputy_admin',
+					'deputy_admin.pilots_name',
+					'desciption'
 				));
 				break;
 
 			case 'layout.modal':
 
 				$this->orm->select(array(
-					'category'
+					'ordering'
 				));
 				break;
 
@@ -224,30 +269,60 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 
 		// SELECT required fields for all profiles
 		$this->orm->select(array(
+			'created_by',
 			'published'
 		));
 
 		// ACCESS : Restricts accesses over the local table
 		$this->orm->access('a', array(
-			'publish' => 'published'
+			'publish' => 'published',
+			'author' => 'created_by'
 		));
 
-		// SEARCH : Category
+		// SEARCH : Category + Desciption
 		$this->orm->search('search', array(
 			'on' => array(
-				'category' => 'like'
+				'category' => 'like',
+				'desciption' => 'like'
 			)
 		));
 
 		//WHERE - FILTER : Publish state
 		$published = $this->getState('filter.published');
 		if (is_numeric($published))
-			$query->where('a.published = ' . (int) $published);
+		{
+			$allowAuthor = '';
+			if (($published == 1) && !$acl->get('core.edit.state')) //ACL Limit to publish = 1
+			{
+				//Allow the author to see its own unpublished/archived/trashed items
+				if ($acl->get('core.edit.own') || $acl->get('core.view.own'))
+					$allowAuthor = ' OR a.created_by = ' . (int)JFactory::getUser()->get('id');
+			}
+			$query->where('(a.published = ' . (int) $published . $allowAuthor . ')');
+		}
 		elseif (!$published)
+		{
 			$query->where('(a.published = 0 OR a.published = 1 OR a.published IS NULL)');
+		}
+
+		// FILTER : Admin
+		if($filter_admin = $this->getState('filter.admin'))
+		{
+			if ($filter_admin > 0){
+				$this->addWhere("a.admin = " . (int)$filter_admin);
+			}
+		}
+
+		// FILTER : Deputy Admin
+		if($filter_deputy_admin = $this->getState('filter.deputy_admin'))
+		{
+			if ($filter_deputy_admin > 0){
+				$this->addWhere("a.deputy_admin = " . (int)$filter_deputy_admin);
+			}
+		}
 
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'category');
+		$orderCol = $this->getState('list.ordering', 'ordering');
 		$orderDir = $this->getState('list.direction', 'ASC');
 
 		if ($orderCol)

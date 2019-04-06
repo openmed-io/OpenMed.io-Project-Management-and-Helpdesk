@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -68,6 +68,20 @@ class OmhelpdeskCkViewCategories extends OmhelpdeskClassView
 		
 
 		//Filters
+		// Admin
+		$modelAdmin = CkJModel::getInstance('pilots', 'OmhelpdeskModel');
+		$modelAdmin->set('context', $model->get('context'));
+		$filters['filter_admin']->jdomOptions = array(
+			'list' => $modelAdmin->getItems()
+		);
+
+		// Deputy Admin
+		$modelDeputy_admin = CkJModel::getInstance('pilots', 'OmhelpdeskModel');
+		$modelDeputy_admin->set('context', $model->get('context'));
+		$filters['filter_deputy_admin']->jdomOptions = array(
+			'list' => $modelDeputy_admin->getItems()
+		);
+
 		// Sort by
 		$filters['sortTable']->jdomOptions = array(
 			'list' => $this->getSortFields('default')
@@ -185,7 +199,9 @@ class OmhelpdeskCkViewCategories extends OmhelpdeskClassView
 	*/
 	protected function getSortFields($layout = null)
 	{
-		return array();
+		return array(
+			'ordering' => JText::_('OMHELPDESK_FIELD_ORDERING')
+		);
 	}
 
 

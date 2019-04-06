@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	OM Helpdesk
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -812,6 +812,8 @@ class OmhelpdeskCkClassModelList extends JModelList
 			case 'sprint': return $tbl.$com. 'sprints';
 			case 'pilot': return $tbl.$com. 'pilots';
 			case 'requester': return $tbl.$com. 'requestors';
+			case 'admin': return $tbl.$com. 'pilots';
+			case 'deputy_admin': return $tbl.$com. 'pilots';
 			case 'pilots_username': return $tbl. 'users';
 			case 'team': return $tbl.$com. 'teams';
 			case 'requesters_username': return $tbl. 'users';

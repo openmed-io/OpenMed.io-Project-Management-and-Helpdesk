@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -63,7 +63,7 @@ class OmhelpdeskCkViewCategory extends OmhelpdeskClassView
 		$this->lists = &$lists;
 
 		// Define the title
-		$this->_prepareDocument(JText::_('OMHELPDESK_LAYOUT_CATEGORY'), $this->item, 'category');
+		$this->_prepareDocument(JText::_('OMHELPDESK_LAYOUT_CATEGORY'), $this->item, 'ordering');
 
 		$user		= JFactory::getUser();
 		$isNew		= ($model->getId() == 0);
@@ -90,7 +90,13 @@ class OmhelpdeskCkViewCategory extends OmhelpdeskClassView
 		JToolBarHelper::cancel('category.cancel', "OMHELPDESK_JTOOLBAR_CANCEL");
 
 		$this->toolbar = JToolbar::getInstance();
+		$model_admin = CkJModel::getInstance('Pilots', 'OmhelpdeskModel');
+		$model_admin->addGroupOrder("a.pilots_name");
+		$lists['fk']['admin'] = $model_admin->getItems();
 
+		$model_deputy_admin = CkJModel::getInstance('Pilots', 'OmhelpdeskModel');
+		$model_deputy_admin->addGroupOrder("a.pilots_name");
+		$lists['fk']['deputy_admin'] = $model_deputy_admin->getItems();
 	}
 
 

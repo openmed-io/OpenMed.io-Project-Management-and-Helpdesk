@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -172,8 +172,8 @@ class plgSearchOmhelpdesk extends JPlugin
 			'tickets' => 'OMHELPDESK_VIEW_TICKET',
 			'categories' => 'OMHELPDESK_VIEW_CATEGORY',
 			'sprints' => 'OMHELPDESK_VIEW_SPRINT',
-			'pilots' => 'OMHELPDESK_VIEW_PILOT',
 			'teams' => 'OMHELPDESK_VIEW_TEAM',
+			'pilots' => 'OMHELPDESK_VIEW_PILOT',
 			'sdepartments' => 'OMHELPDESK_VIEW_SOURCE_DEPARTMENT'
 		);
 

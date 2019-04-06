@@ -6,7 +6,7 @@
 * --------oOOO-----(_)-----OOOo---------------------------------- www.j-cook.pro --- +
 * @version		1
 * @package		OM Helpdesk
-* @subpackage	Tickets
+* @subpackage	Categories
 * @copyright	
 * @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL

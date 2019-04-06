@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -31,15 +31,25 @@ $userId		= $user->get('id');
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
 $saveOrder	= $listOrder == 'a.ordering' && $listDirn != 'desc';
+JDom::_('framework.sortablelist', array(
+	'domId' => 'grid-categories',
+	'listOrder' => $listOrder,
+	'listDirn' => $listDirn,
+	'formId' => 'adminForm',
+	'ctrl' => 'categories',
+	'proceedSaveOrderButton' => true,
+));
 ?>
 
 <div class="grid_wrapper">
 	<table  class='table' id='grid-categories'>
 		<thead>
 			<tr>
+				<?php if ($model->canEditState()): ?>
 				<th>
-					<?php echo JText::_("OMHELPDESK_FIELD_CATEGORY"); ?>
+					<?php echo JHTML::_('grid.sort',  "OMHELPDESK_HEADING_ORDERING", 'a.ordering', $listDirn, $listOrder ); ?>
 				</th>
+				<?php endif; ?>
 
 				<th width="10px">
 
@@ -65,7 +75,7 @@ $saveOrder	= $listOrder == 'a.ordering' && $listDirn != 'desc';
 			$function	= $input->get('function', 'jSelectItem');
 			//Prepare the params to send to the callback
 			$pickValue = $row->id;
-			$pickLabel = $this->escape(addslashes($row->category));
+			$pickLabel = $this->escape(addslashes($row->ordering));
 			$jsPick = "if (window.parent) window.parent.$function('$pickValue', '$pickLabel', '$modalObject');"
 
 
@@ -75,12 +85,16 @@ $saveOrder	= $listOrder == 'a.ordering' && $listDirn != 'desc';
 				style="cursor:pointer"
 				onclick="<?php echo $jsPick; ?>">
 
+				<?php if ($model->canEditState()): ?>
 				<td>
-					<?php echo JDom::_('html.fly', array(
-						'dataKey' => 'category',
-						'dataObject' => $row
+					<?php echo JDom::_('html.grid.ordering', array(
+						'aclAccess' => 'core.edit.state',
+						'dataKey' => 'ordering',
+						'dataObject' => $row,
+						'enabled' => $saveOrder
 					));?>
 				</td>
+				<?php endif; ?>
 
 				<td width="10px">
 					<?php echo JDom::_('html.fly', array(

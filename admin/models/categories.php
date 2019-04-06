@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -57,6 +57,8 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 		//Define the sortables fields (in lists)
 		if (empty($config['filter_fields'])) {
 			$config['filter_fields'] = array(
+				'a.ordering', 'ordering',
+				'ordering', 'a.ordering',
 
 			);
 		}
@@ -70,6 +72,29 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 
 		parent::__construct($config);
 
+		$this->hasOne('admin', // name
+			'pilots', // foreignModelClass
+			'admin', // localKey
+			'id' // foreignKey
+		);
+
+		$this->hasOne('deputy_admin', // name
+			'pilots', // foreignModelClass
+			'deputy_admin', // localKey
+			'id' // foreignKey
+		);
+
+		$this->hasOne('created_by', // name
+			'.users', // foreignModelClass
+			'created_by', // localKey
+			'id' // foreignKey
+		);
+
+		$this->hasOne('modified_by', // name
+			'.users', // foreignModelClass
+			'modified_by', // localKey
+			'id' // foreignKey
+		);
 	}
 
 	/**
@@ -130,7 +155,7 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 			case 'layout.modal':
 
 				$this->orm->select(array(
-					'category'
+					'ordering'
 				));
 				break;
 
@@ -146,16 +171,18 @@ class OmhelpdeskCkModelCategories extends OmhelpdeskClassModelList
 
 		// SELECT required fields for all profiles
 		$this->orm->select(array(
+			'created_by',
 			'published'
 		));
 
 		// ACCESS : Restricts accesses over the local table
 		$this->orm->access('a', array(
-			'publish' => 'published'
+			'publish' => 'published',
+			'author' => 'created_by'
 		));
 
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'category');
+		$orderCol = $this->getState('list.ordering', 'ordering');
 		$orderDir = $this->getState('list.direction', 'ASC');
 
 		if ($orderCol)

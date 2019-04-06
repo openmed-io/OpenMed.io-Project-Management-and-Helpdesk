@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Tickets
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -234,7 +234,7 @@ class OmhelpdeskCkModelTicket extends OmhelpdeskClassModelItem
 				$this->orm->select(array(
 					'attachment',
 					'category',
-					'category.category',
+					'category.desciption',
 					'created_by',
 					'created_by.name',
 					'creation_date',

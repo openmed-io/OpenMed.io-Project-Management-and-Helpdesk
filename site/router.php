@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	OM Helpdesk
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -369,6 +369,14 @@ function OmhelpdeskRouteConfig()
 		'categories' => array(
 			array(
 				'type' => 'layout'
+			),
+			array(
+				'type' => 'filter',
+				'name' => 'admin'
+			),
+			array(
+				'type' => 'filter',
+				'name' => 'deputy_admin'
 			)
 		),
 		'category' => array(
@@ -394,6 +402,20 @@ function OmhelpdeskRouteConfig()
 				'name' => 'cid'
 			)
 		),
+		'teams' => array(
+			array(
+				'type' => 'layout'
+			)
+		),
+		'team' => array(
+			array(
+				'type' => 'layout'
+			),
+			array(
+				'type' => 'var',
+				'name' => 'cid'
+			)
+		),
 		'pilots' => array(
 			array(
 				'type' => 'layout'
@@ -404,20 +426,6 @@ function OmhelpdeskRouteConfig()
 			)
 		),
 		'pilot' => array(
-			array(
-				'type' => 'layout'
-			),
-			array(
-				'type' => 'var',
-				'name' => 'cid'
-			)
-		),
-		'teams' => array(
-			array(
-				'type' => 'layout'
-			)
-		),
-		'team' => array(
 			array(
 				'type' => 'layout'
 			),

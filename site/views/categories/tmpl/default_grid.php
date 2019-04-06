@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -31,6 +31,14 @@ $userId		= $user->get('id');
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
 $saveOrder	= $listOrder == 'a.ordering' && $listDirn != 'desc';
+JDom::_('framework.sortablelist', array(
+	'domId' => 'grid-categories',
+	'listOrder' => $listOrder,
+	'listDirn' => $listDirn,
+	'formId' => 'adminForm',
+	'ctrl' => 'categories',
+	'proceedSaveOrderButton' => true,
+));
 ?>
 
 <div class="clearfix"></div>
@@ -52,6 +60,18 @@ $saveOrder	= $listOrder == 'a.ordering' && $listDirn != 'desc';
 
 				<th style="text-align:center">
 					<?php echo JText::_("OMHELPDESK_FIELD_CATEGORY"); ?>
+				</th>
+
+				<th style="text-align:center">
+					<?php echo JText::_("OMHELPDESK_FIELD_DESCIPTION"); ?>
+				</th>
+
+				<th style="text-align:center">
+					<?php echo JText::_("OMHELPDESK_FIELD_ADMIN"); ?>
+				</th>
+
+				<th style="text-align:center">
+					<?php echo JText::_("OMHELPDESK_FIELD_DEPUTY_ADMIN"); ?>
 				</th>
 			</tr>
 		</thead>
@@ -79,6 +99,27 @@ $saveOrder	= $listOrder == 'a.ordering' && $listDirn != 'desc';
 				<td style="text-align:center">
 					<?php echo JDom::_('html.fly', array(
 						'dataKey' => 'category',
+						'dataObject' => $row
+					));?>
+				</td>
+
+				<td style="text-align:center">
+					<?php echo JDom::_('html.fly', array(
+						'dataKey' => 'desciption',
+						'dataObject' => $row
+					));?>
+				</td>
+
+				<td style="text-align:center">
+					<?php echo JDom::_('html.fly', array(
+						'dataKey' => '_admin_pilots_name',
+						'dataObject' => $row
+					));?>
+				</td>
+
+				<td style="text-align:center">
+					<?php echo JDom::_('html.fly', array(
+						'dataKey' => '_deputy_admin_pilots_name',
 						'dataObject' => $row
 					));?>
 				</td>

@@ -10,6 +10,30 @@
 				label="OMHELPDESK_FIELD_CATEGORY"
 				filter="STRING"
 				type="cktext"/>
+
+		<field name="desciption"
+				alias="desciption"
+				label="OMHELPDESK_FIELD_DESCIPTION"
+				filter="STRING"
+				type="cktext"/>
+
+		<field name="admin"
+				alias="_admin_pilots_name"
+				label="OMHELPDESK_FIELD_ADMIN"
+				filter="INT"
+				listKey="id"
+				labelKey="pilots_name"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_ADMIN"/>
+
+		<field name="deputy_admin"
+				alias="_deputy_admin_pilots_name"
+				label="OMHELPDESK_FIELD_DEPUTY_ADMIN"
+				filter="INT"
+				listKey="id"
+				labelKey="pilots_name"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_DEPUTY_ADMIN"/>
 	</fieldset>
 
 	<fieldset name="default.filters" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
@@ -24,10 +48,30 @@
 				class="element-filter span-2"
 				ui="chosen"/>
 
+		<field name="filter_admin"
+				listKey="id"
+				labelKey="pilots_name"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_ADMIN"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_ADMIN"
+				ui="chosen"/>
+
+		<field name="filter_deputy_admin"
+				listKey="id"
+				labelKey="pilots_name"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_DEPUTY_ADMIN"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_DEPUTY_ADMIN"
+				ui="chosen"/>
+
 		<field name="search_search"
 				type="cksearch"
-				placeholder="OMHELPDESK_FILTER_NULL_CATEGORY"
-				label="OMHELPDESK_JSEARCH_CATEGORY"
+				placeholder="OMHELPDESK_FILTER_NULL_CATEGORY_DESCIPTION"
+				label="OMHELPDESK_JSEARCH_CATEGORY_DESCIPTION"
 				class="element-filter element-search search-query"
 				ui="chosen"/>
 

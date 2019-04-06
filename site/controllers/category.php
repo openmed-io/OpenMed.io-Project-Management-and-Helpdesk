@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -107,6 +107,38 @@ class OmhelpdeskCkControllerCategory extends OmhelpdeskClassControllerItem
 				));
 				break;
 		}
+	}
+
+	/**
+	* Override method when the author allowed to delete own.
+	*
+	* @access	protected
+	* @param	array	$data	An array of input data.
+	* @param	string	$key	The name of the key for the primary key; default is id..
+	*
+	* @return	boolean	True on success
+	*/
+	protected function allowDelete($data = array(), $key = id)
+	{
+		return parent::allowDelete($data, $key, array(
+		'key_author' => 'created_by'
+		));
+	}
+
+	/**
+	* Override method when the author allowed to edit own.
+	*
+	* @access	protected
+	* @param	array	$data	An array of input data.
+	* @param	string	$key	The name of the key for the primary key; default is id..
+	*
+	* @return	boolean	True on success
+	*/
+	protected function allowEdit($data = array(), $key = id)
+	{
+		return parent::allowEdit($data, $key, array(
+		'key_author' => 'created_by'
+		));
 	}
 
 	/**

@@ -7,7 +7,7 @@
 * @package		OM Helpdesk
 * @subpackage	OM Helpdesk
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -31,11 +31,11 @@
 .ico-48-omhelpdesk_sprints, .icon-48-omhelpdesk_sprints {
 	background-image:url('../images/icon-48-omhelpdesk_sprints.png');
 }
-.ico-48-omhelpdesk_pilots, .icon-48-omhelpdesk_pilots {
-	background-image:url('../images/icon-48-omhelpdesk_pilots.png');
-}
 .ico-48-omhelpdesk_teams, .icon-48-omhelpdesk_teams {
 	background-image:url('../images/icon-48-omhelpdesk_teams.png');
+}
+.ico-48-omhelpdesk_pilots, .icon-48-omhelpdesk_pilots {
+	background-image:url('../images/icon-48-omhelpdesk_pilots.png');
 }
 .ico-48-omhelpdesk_sdepartments, .icon-48-omhelpdesk_sdepartments {
 	background-image:url('../images/icon-48-omhelpdesk_sdepartments.png');
@@ -62,11 +62,11 @@
 .ico-16-omhelpdesk_sprints, .icon-16-omhelpdesk_sprints {
 	background-image:url('../images/icon-16-omhelpdesk_sprints.png');
 }
-.ico-16-omhelpdesk_pilots, .icon-16-omhelpdesk_pilots {
-	background-image:url('../images/icon-16-omhelpdesk_pilots.png');
-}
 .ico-16-omhelpdesk_teams, .icon-16-omhelpdesk_teams {
 	background-image:url('../images/icon-16-omhelpdesk_teams.png');
+}
+.ico-16-omhelpdesk_pilots, .icon-16-omhelpdesk_pilots {
+	background-image:url('../images/icon-16-omhelpdesk_pilots.png');
 }
 .ico-16-omhelpdesk_sdepartments, .icon-16-omhelpdesk_sdepartments {
 	background-image:url('../images/icon-16-omhelpdesk_sdepartments.png');

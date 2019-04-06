@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Tickets
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -100,13 +100,13 @@ class OmhelpdeskCkViewTicket extends OmhelpdeskClassView
 		$model_requester->addGroupOrder("a.requesters_name");
 		$lists['fk']['requester'] = $model_requester->getItems();
 
+		$model_category = CkJModel::getInstance('Categories', 'OmhelpdeskModel');
+		$model_category->addGroupOrder("a.desciption");
+		$lists['fk']['category'] = $model_category->getItems();
+
 		$model_pilot = CkJModel::getInstance('Pilots', 'OmhelpdeskModel');
 		$model_pilot->addGroupOrder("a.pilots_name");
 		$lists['fk']['pilot'] = $model_pilot->getItems();
-
-		$model_category = CkJModel::getInstance('Categories', 'OmhelpdeskModel');
-		$model_category->addGroupOrder("a.category");
-		$lists['fk']['category'] = $model_category->getItems();
 
 		$model_sprint = CkJModel::getInstance('Sprints', 'OmhelpdeskModel');
 		$model_sprint->addGroupOrder("a.sprint_name");

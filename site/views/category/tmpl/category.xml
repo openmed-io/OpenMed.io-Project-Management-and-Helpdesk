@@ -17,7 +17,7 @@
 					default=""
 					description="OMHELPDESK_JSEARCH_SELECT_CATEGORY"
 					model="categories"
-					labelKey="category"/>
+					labelKey="ordering"/>
 		</fieldset>
 	</fields>
 </metadata>

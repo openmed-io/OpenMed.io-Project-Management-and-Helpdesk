@@ -33,6 +33,14 @@ CREATE TABLE IF NOT EXISTS `#__omhelpdesk_categories` (
 	`id` BIGINT(20) UNSIGNED NOT NULL auto_increment,
 	`published` TINYINT(11) DEFAULT 1 ,
 	`category` VARCHAR(255) ,
+	`desciption` VARCHAR(255) ,
+	`admin` BIGINT(20) UNSIGNED ,
+	`deputy_admin` BIGINT(20) UNSIGNED ,
+	`modification_date` DATETIME ,
+	`ordering` INT(11) ,
+	`created_by` BIGINT(20) UNSIGNED ,
+	`modified_by` BIGINT(20) UNSIGNED ,
+	`creation_date` DATETIME ,
 
 	PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -51,6 +59,18 @@ CREATE TABLE IF NOT EXISTS `#__omhelpdesk_sprints` (
 
 
 -- - 8< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- Create table : Teams
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - >8 -
+CREATE TABLE IF NOT EXISTS `#__omhelpdesk_teams` (
+	`id` BIGINT(20) UNSIGNED NOT NULL auto_increment,
+	`published` TINYINT(11) ,
+	`team` VARCHAR(255) ,
+
+	PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+-- - 8< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -- Create table : Pilots
 -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - >8 -
 CREATE TABLE IF NOT EXISTS `#__omhelpdesk_pilots` (
@@ -62,18 +82,6 @@ CREATE TABLE IF NOT EXISTS `#__omhelpdesk_pilots` (
 
 	PRIMARY KEY  (`id`),
 	UNIQUE KEY(pilots_username)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-
--- - 8< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
--- Create table : Teams
--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - >8 -
-CREATE TABLE IF NOT EXISTS `#__omhelpdesk_teams` (
-	`id` BIGINT(20) UNSIGNED NOT NULL auto_increment,
-	`published` TINYINT(11) ,
-	`team` VARCHAR(255) ,
-
-	PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 

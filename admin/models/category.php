@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -77,7 +77,7 @@ class OmhelpdeskCkModelCategory extends OmhelpdeskClassModelItem
 			'ordering',
 
 			// Parent Label Key
-			'category'
+			'ordering'
 		);
 
 		if (!parent::delete($pks))
@@ -159,6 +159,14 @@ class OmhelpdeskCkModelCategory extends OmhelpdeskClassModelItem
 				$data->id = 0;
 				$data->published = 1;
 				$data->category = null;
+				$data->desciption = null;
+				$data->admin = $jinput->get('filter_admin', $this->getState('filter.admin'), 'INT');
+				$data->deputy_admin = $jinput->get('filter_deputy_admin', $this->getState('filter.deputy_admin'), 'INT');
+				$data->modification_date = null;
+				$data->ordering = null;
+				$data->created_by = $jinput->get('filter_created_by', $this->getState('filter.created_by'), 'INT');
+				$data->modified_by = $jinput->get('filter_modified_by', $this->getState('filter.modified_by'), 'INT');
+				$data->creation_date = null;
 
 			}
 		}
@@ -232,11 +240,13 @@ class OmhelpdeskCkModelCategory extends OmhelpdeskClassModelItem
 		}
 
 		$this->orm->select(array(
+			'created_by',
 			'published'
 		));
 
 		$this->orm->access('a', array(
-			'publish' => 'published'
+			'publish' => 'published',
+			'author' => 'created_by'
 		));
 
 		// ORDERING
@@ -253,6 +263,47 @@ class OmhelpdeskCkModelCategory extends OmhelpdeskClassModelItem
 	}
 
 	/**
+	* Prepare and sanitise the table prior to saving.
+	*
+	* @access	protected
+	* @param	JTable	$table	A JTable object.
+	*
+	*
+	* @since	1.6
+	*
+	* @return	void
+	*/
+	protected function prepareTable($table)
+	{
+		$date = JFactory::getDate();
+
+
+		if (empty($table->id))
+		{
+			// Set ordering to the last item if not set
+			$conditions = $this->getReorderConditions($table);
+			$conditions = (count($conditions)?implode(" AND ", $conditions):'');
+			$table->ordering = $table->getNextOrder($conditions);
+
+			//Defines automatically the author of this element
+			$table->created_by = JFactory::getUser()->get('id');
+
+			//Creation date
+			if (empty($table->creation_date))
+				$table->creation_date =  JFactory::getDate()->toSql();
+		}
+		else
+		{
+			//Modification date
+			$table->modification_date = JFactory::getDate()->toSql();
+
+			//Defines automatically the editor of this element
+			$table->modified_by = JFactory::getUser()->get('id');
+		}
+
+	}
+
+	/**
 	* Save an item.
 	*
 	* @access	public
@@ -262,13 +313,21 @@ class OmhelpdeskCkModelCategory extends OmhelpdeskClassModelItem
 	*/
 	public function save($data)
 	{
+		//Convert from a non-SQL formated date (modification_date)
+		$data['modification_date'] = OmhelpdeskHelperDates::getSqlDate($data['modification_date'], array('Y-m-d H:i'), true, 'USER_UTC');
 
+		//Convert from a non-SQL formated date (creation_date)
+		$data['creation_date'] = OmhelpdeskHelperDates::getSqlDate($data['creation_date'], array('Y-m-d H:i'), true, 'USER_UTC');
 		//Some security checks
 		$acl = OmhelpdeskHelper::getActions();
 
 		//Secure the published tag if not allowed to change
 		if (isset($data['published']) && !$acl->get('core.edit.state'))
 			unset($data['published']);
+
+		//Secure the author key if not allowed to change
+		if (isset($data['created_by']) && !$acl->get('core.edit'))
+			unset($data['created_by']);
 
 		if (parent::save($data)) {
 			return true;

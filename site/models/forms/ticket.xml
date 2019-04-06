@@ -22,6 +22,15 @@
 				type="ckcombo"
 				nullLabel="OMHELPDESK_JSEARCH_SELECT_REQUESTER"/>
 
+		<field name="category"
+				alias="_category_desciption"
+				label="OMHELPDESK_FIELD_CATEGORY"
+				filter="INT"
+				listKey="id"
+				labelKey="desciption"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_CATEGORY"/>
+
 		<field name="pilot"
 				alias="_pilot_pilots_name"
 				label="OMHELPDESK_FIELD_PILOT"
@@ -31,14 +40,14 @@
 				type="ckcombo"
 				nullLabel="OMHELPDESK_JSEARCH_SELECT_PILOT"/>
 
-		<field name="category"
-				alias="_category_category"
-				label="OMHELPDESK_FIELD_CATEGORY"
+		<field name="sprint"
+				alias="_sprint_sprint_name"
+				label="OMHELPDESK_FIELD_SPRINT"
 				filter="INT"
 				listKey="id"
-				labelKey="category"
+				labelKey="sprint_name"
 				type="ckcombo"
-				nullLabel="OMHELPDESK_JSEARCH_SELECT_CATEGORY"/>
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_SPRINT"/>
 
 		<field name="done"
 				alias="done"
@@ -50,15 +59,6 @@
 			<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
 			<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
 		</field>
-
-		<field name="sprint"
-				alias="_sprint_sprint_name"
-				label="OMHELPDESK_FIELD_SPRINT"
-				filter="INT"
-				listKey="id"
-				labelKey="sprint_name"
-				type="ckcombo"
-				nullLabel="OMHELPDESK_JSEARCH_SELECT_SPRINT"/>
 
 		<field name="description"
 				alias="description"

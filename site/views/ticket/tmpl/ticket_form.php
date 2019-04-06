@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Tickets
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -68,26 +68,6 @@ $fieldSets = $this->form->getFieldsets();
 
 
 	<?php
-	// Pilot
-	$field = $fieldSet['jform_pilot'];
-	$field->jdomOptions = array(
-		'list' => $this->lists['fk']['pilot']
-			);
-	?>
-	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(OmhelpdeskHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
-	<?php
 	// Category
 	$field = $fieldSet['jform_category'];
 	$field->jdomOptions = array(
@@ -108,8 +88,11 @@ $fieldSets = $this->form->getFieldsets();
 
 
 	<?php
-	// Done
-	$field = $fieldSet['jform_done'];
+	// Pilot
+	$field = $fieldSet['jform_pilot'];
+	$field->jdomOptions = array(
+		'list' => $this->lists['fk']['pilot']
+			);
 	?>
 	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
@@ -130,6 +113,23 @@ $fieldSets = $this->form->getFieldsets();
 	$field->jdomOptions = array(
 		'list' => $this->lists['fk']['sprint']
 			);
+	?>
+	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(OmhelpdeskHelperHtmlValidator::loadValidator($field)); ?>
+
+
+
+	<?php
+	// Done
+	$field = $fieldSet['jform_done'];
 	?>
 	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">

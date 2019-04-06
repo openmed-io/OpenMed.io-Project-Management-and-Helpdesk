@@ -33,19 +33,19 @@
 				layout="default"
 				icon="omhelpdesk_sprints"/>
 
-		<item		label="OMHELPDESK_LAYOUT_PILOTS"
-				description="OMHELPDESK_LAYOUT_SHOW_PILOTS_LAYOUT"
-				type="layout"
-				view="pilots"
-				layout="default"
-				icon="omhelpdesk_pilots"/>
-
 		<item		label="OMHELPDESK_LAYOUT_TEAMS"
 				description="OMHELPDESK_LAYOUT_SHOW_TEAMS_LAYOUT"
 				type="layout"
 				view="teams"
 				layout="default"
 				icon="omhelpdesk_teams"/>
+
+		<item		label="OMHELPDESK_LAYOUT_PILOTS"
+				description="OMHELPDESK_LAYOUT_SHOW_PILOTS_LAYOUT"
+				type="layout"
+				view="pilots"
+				layout="default"
+				icon="omhelpdesk_pilots"/>
 
 		<item		label="OMHELPDESK_LAYOUT_DEPARTMENTS"
 				description="OMHELPDESK_LAYOUT_SHOW_DEPARTMENTS_LAYOUT"
@@ -99,19 +99,19 @@
 				layout="default"
 				icon="omhelpdesk_sprints"/>
 
-		<item		label="OMHELPDESK_LAYOUT_PILOTS"
-				description="OMHELPDESK_LAYOUT_SHOW_PILOTS_LAYOUT"
-				type="layout"
-				view="pilots"
-				layout="default"
-				icon="omhelpdesk_pilots"/>
-
 		<item		label="OMHELPDESK_LAYOUT_TEAMS"
 				description="OMHELPDESK_LAYOUT_SHOW_TEAMS_LAYOUT"
 				type="layout"
 				view="teams"
 				layout="default"
 				icon="omhelpdesk_teams"/>
+
+		<item		label="OMHELPDESK_LAYOUT_PILOTS"
+				description="OMHELPDESK_LAYOUT_SHOW_PILOTS_LAYOUT"
+				type="layout"
+				view="pilots"
+				layout="default"
+				icon="omhelpdesk_pilots"/>
 
 		<item		label="OMHELPDESK_LAYOUT_DEPARTMENTS"
 				description="OMHELPDESK_LAYOUT_SHOW_DEPARTMENTS_LAYOUT"

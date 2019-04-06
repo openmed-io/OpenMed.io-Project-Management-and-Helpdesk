@@ -18,15 +18,15 @@ DROP TABLE IF EXISTS `#__omhelpdesk_sprints`;
 
 
 -- - 8< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
--- Remove table Pilots
--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - >8 -
-DROP TABLE IF EXISTS `#__omhelpdesk_pilots`;
-
-
--- - 8< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 -- Remove table Teams
 -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - >8 -
 DROP TABLE IF EXISTS `#__omhelpdesk_teams`;
+
+
+-- - 8< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+-- Remove table Pilots
+-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - >8 -
+DROP TABLE IF EXISTS `#__omhelpdesk_pilots`;
 
 
 -- - 8< - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

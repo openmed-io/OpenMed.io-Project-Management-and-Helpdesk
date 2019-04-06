@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -65,6 +65,16 @@ echo JLayoutHelper::render('title', array(
 					<?php echo $this->filters['filter_published']->input;?>
 				<?php endif; ?>
 
+			</div>
+
+
+			<div class="pull-left">
+				<?php echo $this->filters['filter_admin']->input;?>
+			</div>
+
+
+			<div class="pull-left">
+				<?php echo $this->filters['filter_deputy_admin']->input;?>
 			</div>
 
 

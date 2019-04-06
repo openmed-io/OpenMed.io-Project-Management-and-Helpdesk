@@ -8,7 +8,7 @@
 * @package		OM Helpdesk
 * @subpackage	Categories
 * @copyright	
-* @author		Marcin Krasucki - openmed.io - marcin.krasucki@intuigo.pl
+* @author		Marcin Krasucki - openmed.io - marcin.krasucki@at@intuigo.pl
 * @license		GNU GPL
 *
 *             .oooO  Oooo.
@@ -114,7 +114,9 @@ class OmhelpdeskCkViewCategories extends OmhelpdeskClassView
 	*/
 	protected function getSortFields($layout = null)
 	{
-		return array();
+		return array(
+			'ordering' => JText::_('OMHELPDESK_FIELD_ORDERING')
+		);
 	}
 
 

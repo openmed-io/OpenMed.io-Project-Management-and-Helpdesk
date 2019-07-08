@@ -58,6 +58,18 @@
 					type="modalpicker"
 					model="sdepartments"
 					labelKey="published"/>
+
+			<field name="filter_done"
+					label="OMHELPDESK_JSEARCH_FILTER_DONE"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_DONE"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_DONE"
+					type="ckcombo"
+					listKey="value">
+				<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+				<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+			</field>
 		</fieldset>
 	</fields>
 </metadata>

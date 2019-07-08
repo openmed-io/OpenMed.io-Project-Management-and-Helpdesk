@@ -67,25 +67,25 @@ class OmhelpdeskCkModelTeam extends OmhelpdeskClassModelItem
 	*/
 	public function delete(&$pks)
 	{
-		if (!count( $pks ))
+			if (!count( $pks ))
+				return true;
+
+			//Integrity : Restrict delete teams which are referred by pilots
+			$model = CkJModel::getInstance('pilot', 'OmhelpdeskModel');
+			$model->integrityRestrict('team', $pks,
+				// Label Key
+				'pilots_username',
+
+				// Parent Label Key
+				'team'
+			);
+
+			if (!parent::delete($pks))
+				return false;
+
+
+
 			return true;
-
-		//Integrity : Restrict delete teams which are referred by pilots
-		$model = CkJModel::getInstance('pilot', 'OmhelpdeskModel');
-		$model->integrityRestrict('team', $pks,
-			// Label Key
-			'pilots_username',
-
-			// Parent Label Key
-			'team'
-		);
-
-		if (!parent::delete($pks))
-			return false;
-
-
-
-		return true;
 	}
 
 	/**
@@ -263,17 +263,17 @@ class OmhelpdeskCkModelTeam extends OmhelpdeskClassModelItem
 	public function save($data)
 	{
 
-		//Some security checks
-		$acl = OmhelpdeskHelper::getActions();
+			//Some security checks
+			$acl = OmhelpdeskHelper::getActions();
 
-		//Secure the published tag if not allowed to change
-		if (isset($data['published']) && !$acl->get('core.edit.state'))
-			unset($data['published']);
+			//Secure the published tag if not allowed to change
+			if (isset($data['published']) && !$acl->get('core.edit.state'))
+				unset($data['published']);
 
-		if (parent::save($data)) {
-			return true;
-		}
-		return false;
+			if (parent::save($data)) {
+				return true;
+			}
+			return false;
 
 
 	}

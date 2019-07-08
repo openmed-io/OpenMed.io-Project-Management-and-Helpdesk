@@ -435,6 +435,10 @@ function OmhelpdeskCkRouteConfig()
 		'requestors' => array(
 			array(
 				'type' => 'layout'
+			),
+			array(
+				'type' => 'filter',
+				'name' => 'department'
 			)
 		),
 		'requestor' => array(

@@ -66,7 +66,13 @@ class OmhelpdeskCkModelRequestors extends OmhelpdeskClassModelList
 			'published' => 'cmd',
 			'sortTable' => 'cmd',
 			'directionTable' => 'cmd',
-			'limit' => 'cmd'
+			'limit' => 'cmd',
+			'department' => 'cmd'
+				));
+
+		//Define the searchable fields
+		$this->set('search_vars', array(
+			'search' => 'string'
 				));
 
 
@@ -120,7 +126,9 @@ class OmhelpdeskCkModelRequestors extends OmhelpdeskClassModelList
 		$id	.= ':'.$this->getState('sortTable');
 		$id	.= ':'.$this->getState('directionTable');
 		$id	.= ':'.$this->getState('limit');
+		$id	.= ':'.$this->getState('search.search');
 		$id	.= ':'.$this->getState('filter.published');
+		$id	.= ':'.$this->getState('filter.department');
 		return parent::getStoreId($id);
 	}
 
@@ -241,12 +249,27 @@ class OmhelpdeskCkModelRequestors extends OmhelpdeskClassModelList
 			'publish' => 'published'
 		));
 
+		// SEARCH : Requester\'s name
+		$this->orm->search('search', array(
+			'on' => array(
+				'requesters_name' => 'like'
+			)
+		));
+
 		//WHERE - FILTER : Publish state
 		$published = $this->getState('filter.published');
 		if (is_numeric($published))
 			$query->where('a.published = ' . (int) $published);
 		elseif (!$published)
 			$query->where('(a.published = 0 OR a.published = 1 OR a.published IS NULL)');
+
+		// FILTER : Department > Department
+		if($filter_department = $this->getState('filter.department'))
+		{
+			if ($filter_department > 0){
+				$this->addWhere("a.department = " . (int)$filter_department);
+			}
+		}
 
 		// ORDERING
 		$orderCol = $this->getState('list.ordering', 'requesters_name');

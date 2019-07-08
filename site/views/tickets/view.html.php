@@ -116,21 +116,17 @@ class OmhelpdeskCkViewTickets extends OmhelpdeskClassView
 		if ($model->canEdit())
 			JToolBarHelper::editList('ticket.edit', "OMHELPDESK_JTOOLBAR_EDIT");
 
-		// Publish
+		// Archive
 		if ($model->canEditState())
-			JToolBarHelper::publishList('tickets.publish', "OMHELPDESK_JTOOLBAR_PUBLISH");
-
-		// Unpublish
-		if ($model->canEditState())
-			JToolBarHelper::unpublishList('tickets.unpublish', "OMHELPDESK_JTOOLBAR_UNPUBLISH");
+			JToolBarHelper::archiveList('tickets.archive', "OMHELPDESK_JTOOLBAR_ARCHIVE");
 
 		// Trash
 		if ($model->canEditState())
 			JToolBarHelper::trash('tickets.trash', "OMHELPDESK_JTOOLBAR_TRASH");
 
-		// Archive
-		if ($model->canEditState())
-			JToolBarHelper::archiveList('tickets.archive', "OMHELPDESK_JTOOLBAR_ARCHIVE");
+		// Delete
+		if ($model->canDelete())
+			JToolBarHelper::deleteList(JText::_('OMHELPDESK_JTOOLBAR_ARE_YOU_SURE_TO_DELETE'), 'ticket.delete', "OMHELPDESK_JTOOLBAR_DELETE");
 
 		$this->toolbar = JToolbar::getInstance();
 	}
@@ -181,21 +177,17 @@ class OmhelpdeskCkViewTickets extends OmhelpdeskClassView
 		if ($model->canEdit())
 			JToolBarHelper::editList('ticket.edit', "OMHELPDESK_JTOOLBAR_EDIT");
 
-		// Publish
+		// Archive
 		if ($model->canEditState())
-			JToolBarHelper::publishList('tickets.publish', "OMHELPDESK_JTOOLBAR_PUBLISH");
-
-		// Unpublish
-		if ($model->canEditState())
-			JToolBarHelper::unpublishList('tickets.unpublish', "OMHELPDESK_JTOOLBAR_UNPUBLISH");
+			JToolBarHelper::archiveList('tickets.archive', "OMHELPDESK_JTOOLBAR_ARCHIVE");
 
 		// Trash
 		if ($model->canEditState())
 			JToolBarHelper::trash('tickets.trash', "OMHELPDESK_JTOOLBAR_TRASH");
 
-		// Archive
-		if ($model->canEditState())
-			JToolBarHelper::archiveList('tickets.archive', "OMHELPDESK_JTOOLBAR_ARCHIVE");
+		// Delete
+		if ($model->canDelete())
+			JToolBarHelper::deleteList(JText::_('OMHELPDESK_JTOOLBAR_ARE_YOU_SURE_TO_DELETE'), 'ticket.delete', "OMHELPDESK_JTOOLBAR_DELETE");
 
 		$this->toolbar = JToolbar::getInstance();
 	}
@@ -292,7 +284,6 @@ class OmhelpdeskCkViewTickets extends OmhelpdeskClassView
 	{
 		return array(
 			'done' => JText::_('OMHELPDESK_FIELD_DONE'),
-			'ordering' => JText::_('OMHELPDESK_FIELD_ORDERING'),
 			'title' => JText::_('OMHELPDESK_FIELD_TITLE'),
 			'creation_date' => JText::_('OMHELPDESK_FIELD_CREATION_DATE'),
 			'requester.requesters_name' => JText::_('OMHELPDESK_FIELD_REQUESTER'),

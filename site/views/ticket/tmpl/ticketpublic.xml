@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <metadata>
-	<layout title="OMHELPDESK_LAYOUT_TICKET">
+	<layout title="OMHELPDESK_LAYOUT_TICKET_PUBLIC">
 	<message>
-		<![CDATA[OMHELPDESK_LAYOUT_SHOW_TICKET_LAYOUT]]>
+		<![CDATA[OMHELPDESK_LAYOUT_SHOW_TICKET_PUBLIC_LAYOUT]]>
 	</message></layout>
 
 	<fields name="request">

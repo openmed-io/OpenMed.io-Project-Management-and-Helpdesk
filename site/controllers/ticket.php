@@ -175,6 +175,58 @@ class OmhelpdeskCkControllerTicket extends OmhelpdeskClassControllerItem
 				));
 				break;
 
+			case 'ticketpublic.cancel':
+				$this->applyRedirection($result, array(
+					'stay',
+					'com_omhelpdesk.tickets.default'
+				), array(
+					'cid[]' => null
+				));
+				break;
+
+			default:
+				$this->applyRedirection($result, array(
+					'stay',
+					'com_omhelpdesk.tickets.default'
+				));
+				break;
+		}
+	}
+
+	/**
+	* Method to delete an element.
+	*
+	* @access	public
+	*
+	* @return	void
+	*/
+	public function delete()
+	{
+		JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+		$this->_result = $result = parent::delete();
+		$model = $this->getModel();
+
+		//Define the redirections
+		switch($this->getLayout() .'.'. $this->getTask())
+		{
+			case 'default.delete':
+				$this->applyRedirection($result, array(
+					'stay',
+					'com_omhelpdesk.tickets.default'
+				), array(
+					'cid[]' => null
+				));
+				break;
+
+			case 'modal.delete':
+				$this->applyRedirection($result, array(
+					'stay',
+					'com_omhelpdesk.tickets.default'
+				), array(
+					'cid[]' => null
+				));
+				break;
+
 			default:
 				$this->applyRedirection($result, array(
 					'stay',
@@ -344,6 +396,15 @@ class OmhelpdeskCkControllerTicket extends OmhelpdeskClassControllerItem
 					'com_omhelpdesk.ticket.ticket'
 				), array(
 					'cid[]' => $model->getState('ticket.id')
+				));
+				break;
+
+			case 'ticketpublic.save':
+				$this->applyRedirection($result, array(
+					'stay',
+					'com_omhelpdesk.tickets.default'
+				), array(
+					'cid[]' => null
 				));
 				break;
 

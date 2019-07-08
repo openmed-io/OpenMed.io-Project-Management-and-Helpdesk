@@ -67,28 +67,28 @@ class OmhelpdeskCkModelCategory extends OmhelpdeskClassModelItem
 	*/
 	public function delete(&$pks)
 	{
-		if (!count( $pks ))
+			if (!count( $pks ))
+				return true;
+
+			//Integrity : Restrict delete categories which are referred by tickets
+			$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
+			$model->integrityRestrict('category', $pks,
+				// Label Key
+				'done',
+
+				// Parent Label Key
+				'ordering',
+
+				// Edit Link (facultative)
+				'index.php?option=com_omhelpdesk&view=ticket&layout=ticket'
+			);
+
+			if (!parent::delete($pks))
+				return false;
+
+
+
 			return true;
-
-		//Integrity : Restrict delete categories which are referred by tickets
-		$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
-		$model->integrityRestrict('category', $pks,
-			// Label Key
-			'ordering',
-
-			// Parent Label Key
-			'ordering',
-
-			// Edit Link (facultative)
-			'index.php?option=com_omhelpdesk&view=ticket&layout=ticket'
-		);
-
-		if (!parent::delete($pks))
-			return false;
-
-
-
-		return true;
 	}
 
 	/**
@@ -335,26 +335,26 @@ class OmhelpdeskCkModelCategory extends OmhelpdeskClassModelItem
 	*/
 	public function save($data)
 	{
-		//Convert from a non-SQL formated date (modification_date)
-		$data['modification_date'] = OmhelpdeskHelperDates::getSqlDate($data['modification_date'], array('Y-m-d H:i'), true, 'USER_UTC');
+			//Convert from a non-SQL formated date (modification_date)
+			$data['modification_date'] = OmhelpdeskHelperDates::getSqlDate($data['modification_date'], array('Y-m-d H:i'), true, 'USER_UTC');
 
-		//Convert from a non-SQL formated date (creation_date)
-		$data['creation_date'] = OmhelpdeskHelperDates::getSqlDate($data['creation_date'], array('Y-m-d H:i'), true, 'USER_UTC');
-		//Some security checks
-		$acl = OmhelpdeskHelper::getActions();
+			//Convert from a non-SQL formated date (creation_date)
+			$data['creation_date'] = OmhelpdeskHelperDates::getSqlDate($data['creation_date'], array('Y-m-d H:i'), true, 'USER_UTC');
+			//Some security checks
+			$acl = OmhelpdeskHelper::getActions();
 
-		//Secure the published tag if not allowed to change
-		if (isset($data['published']) && !$acl->get('core.edit.state'))
-			unset($data['published']);
+			//Secure the published tag if not allowed to change
+			if (isset($data['published']) && !$acl->get('core.edit.state'))
+				unset($data['published']);
 
-		//Secure the author key if not allowed to change
-		if (isset($data['created_by']) && !$acl->get('core.edit'))
-			unset($data['created_by']);
+			//Secure the author key if not allowed to change
+			if (isset($data['created_by']) && !$acl->get('core.edit'))
+				unset($data['created_by']);
 
-		if (parent::save($data)) {
-			return true;
-		}
-		return false;
+			if (parent::save($data)) {
+				return true;
+			}
+			return false;
 
 
 	}

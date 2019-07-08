@@ -174,7 +174,8 @@ class plgSearchOmhelpdesk extends JPlugin
 			'sprints' => 'OMHELPDESK_VIEW_SPRINT',
 			'teams' => 'OMHELPDESK_VIEW_TEAM',
 			'pilots' => 'OMHELPDESK_VIEW_PILOT',
-			'sdepartments' => 'OMHELPDESK_VIEW_SOURCE_DEPARTMENT'
+			'sdepartments' => 'OMHELPDESK_VIEW_SOURCE_DEPARTMENT',
+			'requestors' => 'OMHELPDESK_VIEW_REQUESTOR'
 		);
 
 		return $areas;

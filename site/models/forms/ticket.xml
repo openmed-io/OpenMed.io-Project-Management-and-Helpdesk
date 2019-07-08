@@ -110,6 +110,43 @@
 				timeformat="24"/>
 	</fieldset>
 
+	<fieldset name="ticketpublic.form" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
+
+		<field name="title"
+				alias="title"
+				label="OMHELPDESK_FIELD_TITLE"
+				filter="STRING"
+				type="cktext"
+				required="true"
+				class="validate[required]"/>
+
+		<field name="category"
+				alias="_category_desciption"
+				label="OMHELPDESK_FIELD_CATEGORY"
+				filter="INT"
+				listKey="id"
+				labelKey="desciption"
+				type="ckcombo"
+				nullLabel="OMHELPDESK_JSEARCH_SELECT_CATEGORY"/>
+
+		<field name="description"
+				alias="description"
+				label="OMHELPDESK_FIELD_DESCRIPTION"
+				filter="RAW"
+				type="ckeditor"/>
+
+		<field name="attachment"
+				alias="attachment"
+				label="OMHELPDESK_FIELD_ATTACHMENT"
+				filter="STRING"
+				type="ckfile"
+				view="ticket"
+				indirect="false"
+				root="[DIR_TICKETS_ATTACHMENT]"
+				actions="remove|thumbs|trash|delete"
+				allowedExtensions=""/>
+	</fieldset>
+
 	<fieldset name="default.filters" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">
 
 		<field name="filter_published"
@@ -161,6 +198,18 @@
 				class="span-2 element-filter"
 				label="OMHELPDESK_JSEARCH_DEPARTMENT"
 				ui="chosen"/>
+
+		<field name="filter_done"
+				listKey="value"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_DONE"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_DONE"
+				ui="chosen">
+			<option value="0" icon="icomoon-cancel" color="danger">OMHELPDESK_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">OMHELPDESK_FIELDS_BOOL_YES</option>
+		</field>
 
 		<field name="search_search"
 				type="cksearch"

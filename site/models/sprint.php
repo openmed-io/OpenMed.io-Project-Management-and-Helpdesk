@@ -67,28 +67,28 @@ class OmhelpdeskCkModelSprint extends OmhelpdeskClassModelItem
 	*/
 	public function delete(&$pks)
 	{
-		if (!count( $pks ))
+			if (!count( $pks ))
+				return true;
+
+			//Integrity : Restrict delete sprints which are referred by tickets
+			$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
+			$model->integrityRestrict('sprint', $pks,
+				// Label Key
+				'done',
+
+				// Parent Label Key
+				'sprint_name',
+
+				// Edit Link (facultative)
+				'index.php?option=com_omhelpdesk&view=ticket&layout=ticket'
+			);
+
+			if (!parent::delete($pks))
+				return false;
+
+
+
 			return true;
-
-		//Integrity : Restrict delete sprints which are referred by tickets
-		$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
-		$model->integrityRestrict('sprint', $pks,
-			// Label Key
-			'ordering',
-
-			// Parent Label Key
-			'sprint_name',
-
-			// Edit Link (facultative)
-			'index.php?option=com_omhelpdesk&view=ticket&layout=ticket'
-		);
-
-		if (!parent::delete($pks))
-			return false;
-
-
-
-		return true;
 	}
 
 	/**
@@ -274,17 +274,17 @@ class OmhelpdeskCkModelSprint extends OmhelpdeskClassModelItem
 	public function save($data)
 	{
 
-		//Some security checks
-		$acl = OmhelpdeskHelper::getActions();
+			//Some security checks
+			$acl = OmhelpdeskHelper::getActions();
 
-		//Secure the published tag if not allowed to change
-		if (isset($data['published']) && !$acl->get('core.edit.state'))
-			unset($data['published']);
+			//Secure the published tag if not allowed to change
+			if (isset($data['published']) && !$acl->get('core.edit.state'))
+				unset($data['published']);
 
-		if (parent::save($data)) {
-			return true;
-		}
-		return false;
+			if (parent::save($data)) {
+				return true;
+			}
+			return false;
 
 
 	}

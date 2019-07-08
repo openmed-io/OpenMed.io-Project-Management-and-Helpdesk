@@ -58,7 +58,6 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		if (empty($config['filter_fields'])) {
 			$config['filter_fields'] = array(
 				'a.done', 'done',
-				'a.ordering', 'ordering',
 				'a.title', 'title',
 				'a.creation_date', 'creation_date',
 				'_requester_.requesters_name', 'requester.requesters_name',
@@ -173,7 +172,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			case 'layout.modal':
 
 				$this->orm->select(array(
-					'ordering'
+					'done'
 				));
 				break;
 
@@ -200,7 +199,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		));
 
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'ordering');
+		$orderCol = $this->getState('list.ordering', 'done');
 		$orderDir = $this->getState('list.direction', 'ASC');
 
 		if ($orderCol)

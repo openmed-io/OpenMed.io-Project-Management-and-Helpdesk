@@ -52,6 +52,23 @@
 				class="element-filter span-2"
 				ui="chosen"/>
 
+		<field name="filter_department"
+				listKey="id"
+				labelKey="department"
+				type="ckcombo"
+				submit="true"
+				nullLabel="OMHELPDESK_FILTER_NULL_DEPARTMENT_DEPARTMENT"
+				class="span-2 element-filter"
+				label="OMHELPDESK_JSEARCH_DEPARTMENT_DEPARTMENT"
+				ui="chosen"/>
+
+		<field name="search_search"
+				type="cksearch"
+				placeholder="OMHELPDESK_FILTER_NULL_REQUESTERS_NAME"
+				label="OMHELPDESK_JSEARCH_REQUESTERS_NAME"
+				class="element-filter element-search search-query"
+				ui="chosen"/>
+
 		<field name="sortTable"
 				type="cksort"
 				responsive="hidden-phone"

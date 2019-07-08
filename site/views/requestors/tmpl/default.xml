@@ -18,6 +18,16 @@
 					nullLabel="OMHELPDESK_JSEARCH_SELECT_PUBLISHED"
 					type="ckstate"
 					display="combo"/>
+
+			<field name="filter_department"
+					label="OMHELPDESK_JSEARCH_FILTER_DEPARTMENT"
+					required="false"
+					default=""
+					description="OMHELPDESK_JSEARCH_SELECT_SOURCE_DEPARTMENT"
+					nullLabel="OMHELPDESK_JSEARCH_SELECT_DEPARTMENT"
+					type="modalpicker"
+					model="sdepartments"
+					labelKey="published"/>
 		</fieldset>
 	</fields>
 </metadata>

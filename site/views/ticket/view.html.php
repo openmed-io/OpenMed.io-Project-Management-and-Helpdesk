@@ -35,7 +35,7 @@ class OmhelpdeskCkViewTicket extends OmhelpdeskClassView
 	*
 	* @var array
 	*/
-	protected $layouts = array('ticket');
+	protected $layouts = array('ticket', 'ticketpublic');
 
 	/**
 	* Execute and display a template : Ticket
@@ -63,7 +63,7 @@ class OmhelpdeskCkViewTicket extends OmhelpdeskClassView
 		$this->lists = &$lists;
 
 		// Define the title
-		$this->_prepareDocument(JText::_('OMHELPDESK_LAYOUT_TICKET'), $this->item, 'ordering');
+		$this->_prepareDocument(JText::_('OMHELPDESK_LAYOUT_TICKET'), $this->item, 'done');
 
 		$user		= JFactory::getUser();
 		$isNew		= ($model->getId() == 0);
@@ -111,6 +111,61 @@ class OmhelpdeskCkViewTicket extends OmhelpdeskClassView
 		$model_sprint = CkJModel::getInstance('Sprints', 'OmhelpdeskModel');
 		$model_sprint->addGroupOrder("a.sprint_name");
 		$lists['fk']['sprint'] = $model_sprint->getItems();
+	}
+
+	/**
+	* Execute and display a template : Ticket public
+	*
+	* @access	protected
+	* @param	string	$tpl	The name of the template file to parse; automatically searches through the template paths.
+	*
+	*
+	* @since	11.1
+	*
+	* @return	mixed	A string if successful, otherwise a JError object.
+	*/
+	protected function displayTicketpublic($tpl = null)
+	{
+		// Initialiase variables.
+		$this->model	= $model	= $this->getModel();
+		$this->state	= $state	= $this->get('State');
+		$this->params 	= $state->get('params');
+		$state->set('context', 'layout.ticketpublic');
+		$this->item		= $item		= $this->get('Item');
+
+		$this->form		= $form		= $this->get('Form');
+		$this->canDo	= $canDo	= OmhelpdeskHelper::getActions($model->getId());
+		$lists = array();
+		$this->lists = &$lists;
+
+		// Define the title
+		$this->_prepareDocument(JText::_('OMHELPDESK_LAYOUT_TICKET_PUBLIC'), $this->item, 'done');
+
+		$user		= JFactory::getUser();
+		$isNew		= ($model->getId() == 0);
+
+		//Check ACL before opening the form (prevent from direct access)
+		if (!$model->canEdit($item, true))
+			$model->setError(JText::_('JERROR_ALERTNOAUTHOR'));
+
+		// Check for errors.
+		if (count($errors = $model->getErrors()))
+		{
+			JError::raiseError(500, implode(BR, array_unique($errors)));
+			return false;
+		}
+		//Toolbar
+
+		// Save & Close
+		if (($isNew && $model->canCreate()) || (!$isNew && $item->params->get('access-edit')))
+			JToolBarHelper::save('ticket.save', "OMHELPDESK_JTOOLBAR_SAVE_CLOSE");
+		// Cancel
+		JToolBarHelper::cancel('ticket.cancel', "OMHELPDESK_JTOOLBAR_CANCEL");
+
+		$this->toolbar = JToolbar::getInstance();
+		$model_category = CkJModel::getInstance('Categories', 'OmhelpdeskModel');
+		$model_category->addGroupOrder("a.desciption");
+		$lists['fk']['category'] = $model_category->getItems();
 	}
 
 

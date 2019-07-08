@@ -58,7 +58,6 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		if (empty($config['filter_fields'])) {
 			$config['filter_fields'] = array(
 				'a.done', 'done',
-				'a.ordering', 'ordering',
 				'a.title', 'title',
 				'a.creation_date', 'creation_date',
 				'_requester_.requesters_name', 'requester.requesters_name',
@@ -79,10 +78,10 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			'pilot' => 'cmd',
 			'sprint' => 'cmd',
 			'requester_department' => 'cmd',
+			'done' => 'cmd',
 			'finish_date_n_time_from' => 'varchar',
 			'finish_date_n_time_to' => 'varchar',
-			'overtime' => 'cmd',
-			'done' => 'cmd'
+			'overtime' => 'cmd'
 				));
 
 		//Define the searchable fields
@@ -171,9 +170,9 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		$id	.= ':'.$this->getState('filter.pilot');
 		$id	.= ':'.$this->getState('filter.sprint');
 		$id	.= ':'.$this->getState('filter.requester_department');
+		$id	.= ':'.$this->getState('filter.done');
 		$id	.= ':'.$this->getState('filter.finish_date_n_time');
 		$id	.= ':'.$this->getState('filter.overtime');
-		$id	.= ':'.$this->getState('filter.done');
 		return parent::getStoreId($id);
 	}
 
@@ -209,22 +208,22 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			//Alphabetic, ascending
 			case 'alpha':
 			default:
-				$orderField = 'a.ordering';
+				$orderField = 'a.done';
 				$orderDir = 'ASC';
 				break;
 		}
 
 		$this->orm(array(
 			'select' => array(
-				'ordering' => 'title',
-				"{ordering} {title} {pilot.pilots_name}" => 'text',
+				'done' => 'title',
+				"{done} {title} {pilot.pilots_name}" => 'text',
 			),
 
 			'search' => array(
 
 				'plugin' => array(
 					'on' => array(
-						'{ordering} {title} {pilot.pilots_name}' => $method,
+						'{done} {title} {pilot.pilots_name}' => $method,
 					),
 				),
 			),
@@ -274,7 +273,6 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 					'category.category',
 					'creation_date',
 					'done',
-					'ordering',
 					'pilot',
 					'pilot.pilots_username',
 					'pilot.pilots_username.name',
@@ -305,7 +303,7 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			case 'layout.modal':
 
 				$this->orm->select(array(
-					'ordering'
+					'done'
 				));
 				break;
 
@@ -391,6 +389,13 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			}
 		}
 
+		// FILTER : Done
+		$filter_done = $this->getState('filter.done');
+
+		if ($filter_done !== null){
+			$this->addWhere("a.done = " . (int)$filter_done);
+		}
+
 		// FILTER (Range) : Finish date n time
 		if($filter_finish_date_n_time_from = $this->getState('filter.finish_date_n_time_from'))
 		{
@@ -414,15 +419,8 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 			$this->addWhere("a.overtime = " . (int)$filter_overtime);
 		}
 
-		// FILTER : Done
-		$filter_done = $this->getState('filter.done');
-
-		if ($filter_done !== null){
-			$this->addWhere("a.done = " . (int)$filter_done);
-		}
-
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'ordering');
+		$orderCol = $this->getState('list.ordering', 'done');
 		$orderDir = $this->getState('list.direction', 'ASC');
 
 		if ($orderCol)

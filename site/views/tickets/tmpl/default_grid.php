@@ -66,12 +66,6 @@ JDom::_('framework.sortablelist', array(
 					<?php echo JHTML::_('grid.sort',  "OMHELPDESK_FIELD_DONE", 'a.done', $listDirn, $listOrder ); ?>
 				</th>
 
-				<?php if ($model->canEditState()): ?>
-				<th style="text-align:center">
-					<?php echo JHTML::_('grid.sort',  "OMHELPDESK_HEADING_ORDERING", 'a.ordering', $listDirn, $listOrder ); ?>
-				</th>
-				<?php endif; ?>
-
 				<th style="text-align:center">
 					<?php echo JHTML::_('grid.sort',  "OMHELPDESK_FIELD_TITLE", 'a.title', $listDirn, $listOrder ); ?>
 				</th>
@@ -104,7 +98,7 @@ JDom::_('framework.sortablelist', array(
 			//Group results on : Sprint > Sprint name
 			if (!isset($group_sprint) || ($row->sprint != $group_sprint)):?>
 			<tr>
-				<th colspan="11" class='grid-group grid-group-1'>
+				<th colspan="10" class='grid-group grid-group-1'>
 					<span>
 						<?php echo JDom::_('html.fly', array(
 							'dataKey' => '_sprint_sprint_name',
@@ -149,17 +143,6 @@ JDom::_('framework.sortablelist', array(
 						'viewType' => 'icon'
 					));?>
 				</td>
-
-				<?php if ($model->canEditState()): ?>
-				<td style="text-align:center">
-					<?php echo JDom::_('html.grid.ordering', array(
-						'aclAccess' => 'core.edit.state',
-						'dataKey' => 'ordering',
-						'dataObject' => $row,
-						'enabled' => $saveOrder
-					));?>
-				</td>
-				<?php endif; ?>
 
 				<td style="text-align:center">
 					<?php echo JDom::_('html.fly', array(

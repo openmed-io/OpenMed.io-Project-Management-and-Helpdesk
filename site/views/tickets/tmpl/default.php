@@ -88,6 +88,11 @@ echo JLayoutHelper::render('title', array(
 			</div>
 
 
+			<div class="pull-left">
+				<?php echo $this->filters['filter_done']->input;?>
+			</div>
+
+
 			<div class="clearfix"></div>
 
 			<!-- BRICK : grid -->

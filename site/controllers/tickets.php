@@ -99,16 +99,7 @@ class OmhelpdeskCkControllerTickets extends OmhelpdeskClassControllerList
 		//Define the redirections
 		switch($this->getLayout() .'.'. $this->getTask())
 		{
-			case 'default.publish':
-				$this->applyRedirection($result, array(
-					'stay',
-					'com_omhelpdesk.tickets.default'
-				), array(
-					'cid[]' => null
-				));
-				break;
-
-			case 'default.unpublish':
+			case 'default.archive':
 				$this->applyRedirection($result, array(
 					'stay',
 					'com_omhelpdesk.tickets.default'
@@ -118,15 +109,6 @@ class OmhelpdeskCkControllerTickets extends OmhelpdeskClassControllerList
 				break;
 
 			case 'default.trash':
-				$this->applyRedirection($result, array(
-					'stay',
-					'com_omhelpdesk.tickets.default'
-				), array(
-					'cid[]' => null
-				));
-				break;
-
-			case 'default.archive':
 				$this->applyRedirection($result, array(
 					'stay',
 					'com_omhelpdesk.tickets.default'
@@ -171,16 +153,7 @@ class OmhelpdeskCkControllerTickets extends OmhelpdeskClassControllerList
 				));
 				break;
 
-			case 'modal.publish':
-				$this->applyRedirection($result, array(
-					'stay',
-					'com_omhelpdesk.tickets.default'
-				), array(
-					'cid[]' => null
-				));
-				break;
-
-			case 'modal.unpublish':
+			case 'modal.archive':
 				$this->applyRedirection($result, array(
 					'stay',
 					'com_omhelpdesk.tickets.default'
@@ -190,15 +163,6 @@ class OmhelpdeskCkControllerTickets extends OmhelpdeskClassControllerList
 				break;
 
 			case 'modal.trash':
-				$this->applyRedirection($result, array(
-					'stay',
-					'com_omhelpdesk.tickets.default'
-				), array(
-					'cid[]' => null
-				));
-				break;
-
-			case 'modal.archive':
 				$this->applyRedirection($result, array(
 					'stay',
 					'com_omhelpdesk.tickets.default'

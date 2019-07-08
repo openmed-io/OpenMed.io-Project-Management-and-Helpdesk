@@ -40,7 +40,8 @@ echo JLayoutHelper::render('title', array(
 			<!-- BRICK : toolbar_plur -->
 			<?php echo $this->renderToolbar($this->items);?>
 
-
+			<!-- BRICK : search -->
+			<?php echo $this->filters['search_search']->input;?>
 
 			<!-- BRICK : display -->
 			<div class="pull-right">
@@ -64,6 +65,11 @@ echo JLayoutHelper::render('title', array(
 					<?php echo $this->filters['filter_published']->input;?>
 				<?php endif; ?>
 
+			</div>
+
+
+			<div class="pull-left">
+				<?php echo $this->filters['filter_department']->input;?>
 			</div>
 
 

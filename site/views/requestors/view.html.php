@@ -68,6 +68,13 @@ class OmhelpdeskCkViewRequestors extends OmhelpdeskClassView
 		
 
 		//Filters
+		// Department > Department
+		$modelDepartment = CkJModel::getInstance('sdepartments', 'OmhelpdeskModel');
+		$modelDepartment->set('context', $model->get('context'));
+		$filters['filter_department']->jdomOptions = array(
+			'list' => $modelDepartment->getItems()
+		);
+
 		// Sort by
 		$filters['sortTable']->jdomOptions = array(
 			'list' => $this->getSortFields('default')

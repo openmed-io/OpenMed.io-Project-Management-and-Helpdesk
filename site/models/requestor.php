@@ -67,28 +67,28 @@ class OmhelpdeskCkModelRequestor extends OmhelpdeskClassModelItem
 	*/
 	public function delete(&$pks)
 	{
-		if (!count( $pks ))
+			if (!count( $pks ))
+				return true;
+
+			//Integrity : Restrict delete requestors which are referred by tickets
+			$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
+			$model->integrityRestrict('requester', $pks,
+				// Label Key
+				'done',
+
+				// Parent Label Key
+				'requesters_name',
+
+				// Edit Link (facultative)
+				'index.php?option=com_omhelpdesk&view=ticket&layout=ticket'
+			);
+
+			if (!parent::delete($pks))
+				return false;
+
+
+
 			return true;
-
-		//Integrity : Restrict delete requestors which are referred by tickets
-		$model = CkJModel::getInstance('ticket', 'OmhelpdeskModel');
-		$model->integrityRestrict('requester', $pks,
-			// Label Key
-			'ordering',
-
-			// Parent Label Key
-			'requesters_name',
-
-			// Edit Link (facultative)
-			'index.php?option=com_omhelpdesk&view=ticket&layout=ticket'
-		);
-
-		if (!parent::delete($pks))
-			return false;
-
-
-
-		return true;
 	}
 
 	/**
@@ -282,17 +282,17 @@ class OmhelpdeskCkModelRequestor extends OmhelpdeskClassModelItem
 	public function save($data)
 	{
 
-		//Some security checks
-		$acl = OmhelpdeskHelper::getActions();
+			//Some security checks
+			$acl = OmhelpdeskHelper::getActions();
 
-		//Secure the published tag if not allowed to change
-		if (isset($data['published']) && !$acl->get('core.edit.state'))
-			unset($data['published']);
+			//Secure the published tag if not allowed to change
+			if (isset($data['published']) && !$acl->get('core.edit.state'))
+				unset($data['published']);
 
-		if (parent::save($data)) {
-			return true;
-		}
-		return false;
+			if (parent::save($data)) {
+				return true;
+			}
+			return false;
 
 
 	}

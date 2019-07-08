@@ -74,16 +74,16 @@ class OmhelpdeskCkModelTicket extends OmhelpdeskClassModelItem
 	*/
 	public function delete(&$pks)
 	{
-		if (!count( $pks ))
+			if (!count( $pks ))
+				return true;
+
+
+			if (!parent::delete($pks))
+				return false;
+
+
+
 			return true;
-
-
-		if (!parent::delete($pks))
-			return false;
-
-
-
-		return true;
 	}
 
 	/**
@@ -318,29 +318,29 @@ class OmhelpdeskCkModelTicket extends OmhelpdeskClassModelItem
 	*/
 	public function save($data)
 	{
-		//Convert from a non-SQL formated date (creation_date)
-		$data['creation_date'] = OmhelpdeskHelperDates::getSqlDate($data['creation_date'], array('Y-m-d H:i'), true, 'USER_UTC');
+			//Convert from a non-SQL formated date (creation_date)
+			$data['creation_date'] = OmhelpdeskHelperDates::getSqlDate($data['creation_date'], array('Y-m-d H:i'), true, 'USER_UTC');
 
-		//Convert from a non-SQL formated date (modification_date)
-		$data['modification_date'] = OmhelpdeskHelperDates::getSqlDate($data['modification_date'], array('Y-m-d H:i'), true, 'USER_UTC');
+			//Convert from a non-SQL formated date (modification_date)
+			$data['modification_date'] = OmhelpdeskHelperDates::getSqlDate($data['modification_date'], array('Y-m-d H:i'), true, 'USER_UTC');
 
-		//Convert from a non-SQL formated date (finish_date_n_time)
-		$data['finish_date_n_time'] = OmhelpdeskHelperDates::getSqlDate($data['finish_date_n_time'], array('Y-m-d H:i'), true, 'USER_UTC');
-		//Some security checks
-		$acl = OmhelpdeskHelper::getActions();
+			//Convert from a non-SQL formated date (finish_date_n_time)
+			$data['finish_date_n_time'] = OmhelpdeskHelperDates::getSqlDate($data['finish_date_n_time'], array('Y-m-d H:i'), true, 'USER_UTC');
+			//Some security checks
+			$acl = OmhelpdeskHelper::getActions();
 
-		//Secure the author key if not allowed to change
-		if (isset($data['created_by']) && !$acl->get('core.edit'))
-			unset($data['created_by']);
+			//Secure the author key if not allowed to change
+			if (isset($data['created_by']) && !$acl->get('core.edit'))
+				unset($data['created_by']);
 
-		//Secure the published tag if not allowed to change
-		if (isset($data['published']) && !$acl->get('core.edit.state'))
-			unset($data['published']);
+			//Secure the published tag if not allowed to change
+			if (isset($data['published']) && !$acl->get('core.edit.state'))
+				unset($data['published']);
 
-		if (parent::save($data)) {
-			return true;
-		}
-		return false;
+			if (parent::save($data)) {
+				return true;
+			}
+			return false;
 
 
 	}

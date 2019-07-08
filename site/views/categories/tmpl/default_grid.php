@@ -58,15 +58,15 @@ JDom::_('framework.sortablelist', array(
 				</th>
 				<?php endif; ?>
 
-				<th style="text-align:center">
-					<?php echo JText::_("OMHELPDESK_FIELD_CATEGORY"); ?>
-				</th>
-
 				<?php if ($model->canEditState()): ?>
 				<th style="text-align:center">
 					<?php echo JHTML::_('grid.sort',  "OMHELPDESK_HEADING_ORDERING", 'a.ordering', $listDirn, $listOrder ); ?>
 				</th>
 				<?php endif; ?>
+
+				<th style="text-align:center">
+					<?php echo JText::_("OMHELPDESK_FIELD_CATEGORY"); ?>
+				</th>
 
 				<th style="text-align:center">
 					<?php echo JText::_("OMHELPDESK_FIELD_DESCIPTION"); ?>
@@ -102,13 +102,6 @@ JDom::_('framework.sortablelist', array(
 				</td>
 				<?php endif; ?>
 
-				<td style="text-align:center">
-					<?php echo JDom::_('html.fly', array(
-						'dataKey' => 'category',
-						'dataObject' => $row
-					));?>
-				</td>
-
 				<?php if ($model->canEditState()): ?>
 				<td style="text-align:center">
 					<?php echo JDom::_('html.grid.ordering', array(
@@ -119,6 +112,13 @@ JDom::_('framework.sortablelist', array(
 					));?>
 				</td>
 				<?php endif; ?>
+
+				<td style="text-align:center">
+					<?php echo JDom::_('html.fly', array(
+						'dataKey' => 'category',
+						'dataObject' => $row
+					));?>
+				</td>
 
 				<td style="text-align:center">
 					<?php echo JDom::_('html.fly', array(

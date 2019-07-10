@@ -325,7 +325,7 @@ class OmhelpdeskCkControllerTicket extends OmhelpdeskClassControllerItem
 		parent::postSaveHook($model, $validData);
 		//Upload file : Attachment
 		self::updateFileField($model, 'attachment', array(
-			'extensions' => ''
+			'extensions' => 'bmp|bmp|doc|gif|html|jpg|jpeg|pdf|png|rtf|tar.gz|tiff|txt|zip'
 		));
 	}
 

@@ -73,7 +73,21 @@ class OmhelpdeskCkHelperFile
 	*
 	* @var array
 	*/
-	protected static $mimesTable = array();
+	protected static $mimesTable = array(
+		'bmp' => 'image/vnd.wap.wbmp',
+		'doc' => 'application/msword',
+		'gif' => 'image/gif',
+		'html' => 'text/html',
+		'jpg' => 'image/jpeg',
+		'jpeg' => 'image/jpeg',
+		'pdf' => 'application/pdf',
+		'png' => 'image/png',
+		'rtf' => 'text/rtf',
+		'tar.gz' => 'application/x-gzip',
+		'tiff' => 'image/tiff',
+		'txt' => 'text/plain',
+		'zip' => 'application/x-zip'
+	);
 
 	/**
 	* Create the folders and protect directory with index.html empty file.

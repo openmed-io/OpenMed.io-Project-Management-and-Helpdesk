@@ -75,7 +75,7 @@
 				indirect="false"
 				root="[DIR_TICKETS_ATTACHMENT]"
 				actions="remove|thumbs|trash|delete"
-				allowedExtensions=""/>
+				allowedExtensions="*.bmp|*.bmp|*.doc|*.gif|*.html|*.jpg|*.jpeg|*.pdf|*.png|*.rtf|*.tar.gz|*.tiff|*.txt|*.zip"/>
 
 		<field name="hours_of_work"
 				alias="hours_of_work"
@@ -144,7 +144,7 @@
 				indirect="false"
 				root="[DIR_TICKETS_ATTACHMENT]"
 				actions="remove|thumbs|trash|delete"
-				allowedExtensions=""/>
+				allowedExtensions="*.bmp|*.bmp|*.doc|*.gif|*.html|*.jpg|*.jpeg|*.pdf|*.png|*.rtf|*.tar.gz|*.tiff|*.txt|*.zip"/>
 	</fieldset>
 
 	<fieldset name="default.filters" addfieldpath="/administrator/components/com_omhelpdesk/models/fields">

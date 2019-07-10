@@ -216,14 +216,14 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		$this->orm(array(
 			'select' => array(
 				'done' => 'title',
-				"{done} {title} {pilot.pilots_name}" => 'text',
+				"{done} {title} {pilot.pilots_name} {description}" => 'text',
 			),
 
 			'search' => array(
 
 				'plugin' => array(
 					'on' => array(
-						'{done} {title} {pilot.pilots_name}' => $method,
+						'{done} {title} {pilot.pilots_name} {description}' => $method,
 					),
 				),
 			),
@@ -333,7 +333,8 @@ class OmhelpdeskCkModelTickets extends OmhelpdeskClassModelList
 		$this->orm->search('search', array(
 			'on' => array(
 				'title' => 'like',
-				'pilot.pilots_name' => 'like'
+				'pilot.pilots_name' => 'like',
+				'description' => 'like'
 			)
 		));
 

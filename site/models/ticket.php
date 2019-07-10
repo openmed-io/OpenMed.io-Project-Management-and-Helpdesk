@@ -77,6 +77,13 @@ class OmhelpdeskCkModelTicket extends OmhelpdeskClassModelItem
 			if (!count( $pks ))
 				return true;
 
+			//Integrity : delete the files associated to this deleted item
+			if (!$this->deleteFiles($pks, array(
+													'attachment' => 'trash'
+												))){
+				JError::raiseWarning( 1303, JText::_("OMHELPDESK_ALERT_ERROR_ON_DELETE_FILES") );
+				return false;
+			}
 
 			if (!parent::delete($pks))
 				return false;
